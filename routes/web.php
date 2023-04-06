@@ -32,8 +32,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/category', [CategoriesController::class, 'index'])->name('category.index');
     Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
     Route::delete('/categories/{id}', [CategoriesController::class, 'destroy'])->name('categories.destroy');
-    Route::get('/categories/{category}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
-    Route::put('/categories/{category}', [CategoriesController::class, 'update'])->name('categories.update');
+    Route::get('/categories/{id}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
+    Route::put('/categories/{id}', [CategoriesController::class, 'update'])->name('categories.update');
 
     Route::get('/product/create', [ProductController::class, 'create_product'])->name('create_product');
     Route::post('/product/create', [ProductController::class, 'store_product'])->name('store_product');

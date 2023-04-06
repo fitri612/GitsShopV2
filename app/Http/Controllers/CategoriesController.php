@@ -70,7 +70,7 @@ class CategoriesController extends Controller
      */
     public function edit(Categories $categories)
     {
-        return view('pages.categories-table.edit', compact('categories'));
+        return view('pages.categories-table.index', compact('categories'));
     }
 
     /**
@@ -80,15 +80,20 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categories $categories)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
-        $categories->update([
-            'name' => $request->name,
-        ]);
-        return redirect()->route('category.index')->with('success', 'Category updated successfully!');
+        // dd($request->all());
+        // dd($categories->all());
+
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        // ]);
+        // $categories->update([
+        //     'name' => $request->name,
+        // ]);
+
+        // dd($categories);
+        // return redirect()->route('category.index')->with('success', 'Category updated successfully!');
     }
 
     /**
