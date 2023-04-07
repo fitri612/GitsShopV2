@@ -6,7 +6,6 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Cart') }}</div>
-
                     <div class="card-body ">
                         @if ($errors->any())
                             @foreach ($errors->all() as $error)
