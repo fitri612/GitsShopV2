@@ -13,12 +13,12 @@ class Categories extends Model
         'name',
     ];
 
-    protected $guarded = ['id'];
+    // protected $guarded = ['id'];
 
-    public function products()
-    {
-        return $this->hasMany(Post::class);
-    }
+    // public function products()
+    // {
+    //     return $this->hasMany(Post::class);
+    // }
 
     public function product()
     {

@@ -17,7 +17,7 @@ class CategoriesController extends Controller
     public function index(Categories $categories)
     {
         $categories = Categories::all();
-        return view('pages.categories-table.index', compact('categories'));
+        return view('pages.categories.index', compact('categories'));
     }
 
     /**
@@ -70,7 +70,7 @@ class CategoriesController extends Controller
      */
     public function edit(Categories $categories)
     {
-        return view('pages.categories-table.index', compact('categories'));
+        return view('pages.categories.index', compact('categories'));
     }
 
     /**
@@ -82,18 +82,14 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
-        // dd($categories->all());
-
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        // ]);
-        // $categories->update([
-        //     'name' => $request->name,
-        // ]);
-
-        // dd($categories);
-        // return redirect()->route('category.index')->with('success', 'Category updated successfully!');
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $category = Categories::findOrFail($id);
+        $category->update([
+            'name' => $request->name,
+        ]);
+        return redirect()->route('category.index')->with('success', 'Category has been updated.');
     }
 
     /**

@@ -72,6 +72,10 @@
                                         </a>
                                     @endif
                                     @if (Auth::user()->is_admin)
+                                        <a class="dropdown-item" href="{{ route('index.productV2') }}">
+                                            <i class="fa-solid fa-cart-plus"></i>
+                                            Create product V2
+                                        </a>
                                         <a class="dropdown-item" href="{{ route('create_product') }}">
                                             <i class="fa-solid fa-cart-plus"></i>
                                             Create product
