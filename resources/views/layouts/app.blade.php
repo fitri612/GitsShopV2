@@ -87,6 +87,10 @@
                                             <i class="fa fa-cart-shopping " aria-hidden="true"></i>
                                             Cart
                                         </a>
+                                        <a class="dropdown-item" href="{{ route('transaction.cashier') }}">
+                                            <i class="fa fa-cart-shopping " aria-hidden="true"></i>
+                                            Casier
+                                        </a>
                                     @endif
 
                                     <a class="dropdown-item" href="{{ route('index_order') }}">

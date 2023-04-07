@@ -103,31 +103,33 @@ class ProductControllerv2 extends Controller
     public function update(Product $product, Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'stock' => 'required',
-            'description' => 'required',
-            'image' => 'required',
-            'category_id' => 'required'
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'stock' => 'required|string',
+            'description' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // dd($request->category_id);
-
-        $file = $request->file('image');
-        $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
-
-        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+            $product->update([
+                'image' => $name,
+            ]);
+        }
 
         $product->update([
             'name' => $request->name,
             'price' => $request->price,
             'stock' => $request->stock,
             'description' => $request->description,
-            'image' => $path,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'image' => $name ?? $product->image,
         ]);
-
-        return Redirect::route('index.productV2');
+        return redirect()->route('index.productV2')->with('success', 'Product updated successfully!');
     }
 
     /**
