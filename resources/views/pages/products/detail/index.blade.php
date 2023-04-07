@@ -6,7 +6,6 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Product Detail') }}</div>
-
                     <div class="card-body">
                         <div class="d-flex justify-content-around">
                             <div class="">

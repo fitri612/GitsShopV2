@@ -18,9 +18,11 @@
             <div class="card-header">
                 <h4 class="card-title">Product Fix</h4>
             </div>
+
+
             <div class="d-flex justify-content-between mt-3 px-3">
-                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addProductModal">Add
-                    Category</button>
+                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">Add
+                    Product</button>
             </div>
             {{-- card datanya --}}
             <div class="container">
@@ -39,8 +41,8 @@
                                     <button type="submit" class="btn btn-primary">Show detail</button>
                                 </form>
                                 @if (Auth::check() && Auth::user()->is_admin)
-                                    <button type="button" class="btn btn-primary mt-2" data-toggle="modal"
-                                        data-target="#editProductModal{{ $product->id }}">
+                                    <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
+                                        data-bs-target="#editProductModal{{ $product->id }}">
                                         Edit Product
                                     </button>
                                     <form action="{{ route('delete_product', $product) }}" method="post">
@@ -58,15 +60,13 @@
     </div>
 
     {{-- modal create product --}}
-    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel"
+    <div class="modal " id="addProductModal" tabindex="-1" role="modal" aria-labelledby="addProductModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="POST" action="{{ route('store.productV2') }}" enctype="multipart/form-data">
                     @csrf
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
@@ -112,15 +112,13 @@
 
     {{-- modal edit product --}}
     @foreach ($products as $product)
-        <div class="modal fade" id="editProductModal{{ $product->id }}" aria-labelledby="editProductModalLabel"
+        <div class="modal " id="editProductModal{{ $product->id }}" aria-labelledby="editProductModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form method="POST" action="{{ route('update.productV2', ['product' => $product->id]) }}"
