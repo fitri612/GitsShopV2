@@ -17,7 +17,7 @@
                                     @if ($order->payment_receipt)
                                         <p class="card-text">Paid</p>
                                         <div class="d-flex flew-row justify-content-around">
-                                            <a href="{{ url('storage/' . $order->payment_receipt) }} "
+                                            <a href="{{ url('images/' . $order->payment_receipt) }} "
                                                 class="btn btn-primary">Show payment
                                                 receipt</a>
                                             @if (Auth::user()->is_admin)
