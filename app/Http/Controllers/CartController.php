@@ -24,8 +24,7 @@ class CartController extends Controller
             ->where('user_id', $user_id)
             ->first();
 
-        if($existing_cart == null)
-        {
+        if ($existing_cart == null) {
             $request->validate([
                 'amount' => 'required|gte:1|lte:' . $product->stock
             ]);
@@ -35,9 +34,7 @@ class CartController extends Controller
                 'product_id' => $product_id,
                 'amount' => $request->amount
             ]);
-        }
-        else
-        {
+        } else {
             $request->validate([
                 'amount' => 'required|gte:1|lte:' . ($product->stock - $existing_cart->amount)
             ]);
@@ -54,7 +51,7 @@ class CartController extends Controller
     {
         $user_id = Auth::id();
         $carts = Cart::where('user_id', $user_id)->get();
-        return view('show_cart', compact('carts'));
+        return view('pages.carts.index', compact('carts'));
     }
 
     public function update_cart(Cart $cart, Request $request)
