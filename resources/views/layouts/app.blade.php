@@ -21,7 +21,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -89,6 +90,10 @@
                                         <a class="dropdown-item" href="{{ route('show_cart') }}">
                                             <i class="fa fa-cart-shopping " aria-hidden="true"></i>
                                             Cart
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('transaction.cashier') }}">
+                                            <i class="fa fa-cart-shopping " aria-hidden="true"></i>
+                                            Casier
                                         </a>
                                     @endif
 

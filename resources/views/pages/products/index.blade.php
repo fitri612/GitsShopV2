@@ -30,7 +30,7 @@
                 <div class="row row-cols-1 row-cols-md-3 justify-content-center">
                     @foreach ($products as $product)
                         <div class="card shadow-lg m-3 p-3 mb-5  " style="width:18rem">
-                            <img class="card-img-tops" style="height: 250px" src="{{ url('storage/' . $product->image) }}"
+                            <img class="card-img-tops" style="height: 250px" src="{{ url('images/' . $product->image) }}"
                                 alt="Card image cap">
                             <div class="card-body m-auto ">
                                 <p class="card-text">{{ $product->name }}</p>
