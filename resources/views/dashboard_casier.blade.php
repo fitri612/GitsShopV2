@@ -2,7 +2,7 @@
 
     @section('content')
         <div id="carouselExampleIndicators" class="carousel slide w-100 mx-auto" data-bs-ride="true">
-            <div class="carousel-indicators">
+            {{-- <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
@@ -42,7 +42,7 @@
                 data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-            </button>
+            </button> --}}
         </div>
 
         </div>
@@ -55,9 +55,22 @@
                             alt="Card image cap">
                         <div class="card-body m-auto ">
                             <p class="card-text">{{ $product->name }}</p>
-                            <form action="{{ route('show_product', $product) }}" method="get">
+                            <form action="{{ route('show.productV2', $product) }}" method="get">
                                 <button type="submit" class="btn btn-primary">Show detail</button>
                             </form>
+                            <form action="{{ route('add_to_cart', $product) }}" method="post">
+                                @csrf
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" aria-describedby="basic-addon2"
+                                        name="amount" value=1 min="1">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="submit">
+                                            <i class="fa-solid fa-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
                             @if (Auth::check() && Auth::user()->is_admin)
                                 <form action="{{ route('destroy.productV2', $product) }}" method="post">
                                     @method('delete')
@@ -69,16 +82,4 @@
                     </div>
                 @endforeach
             </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        <div class="text-center text-light p-3 bg-black">
-            © 2022 Copyright:
-            <a class="text-white" href="https://www.instagram.com/hikmalrsq/?hl=id">hikmalrsq</a>
-            <br>
-            <p>STUDY AT:SMKN 7 PONTIANAK</p>
-        </div>
-    @endsection
+        @endsection

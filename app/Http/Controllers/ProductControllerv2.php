@@ -149,4 +149,10 @@ class ProductControllerv2 extends Controller
     {
         return view('pages.products.detail.index', compact('product'));
     }
+
+    public function index_product()
+    {
+        $products = Product::all();
+        return view('dashboard_casier', compact('products'));
+    }
 }
