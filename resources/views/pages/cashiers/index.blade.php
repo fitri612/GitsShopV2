@@ -8,7 +8,7 @@
                     <div class="card-header">Cashiers</div>
                     @foreach ($products as $product)
                         <div class="card shadow-lg m-3 p-3 mb-5  " style="width:18rem">
-                            <img class="card-img-tops" style="height: 250px" src="{{ url('storage/' . $product->image) }}"
+                            <img class="card-img-tops" style="height: 250px" src="{{ url('images/' . $product->image) }}"
                                 alt="Card image cap">
                             <div class="card-body m-auto ">
                                 <p class="card-text">{{ $product->name }}</p>
@@ -68,7 +68,7 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $cart->product->name }}</td>
-                                    <td><img src="{{ url('storage/' . $cart->product->image) }}" alt=""
+                                    <td><img src="{{ url('images/' . $cart->product->image) }}" alt=""
                                             width="50px"></td>
                                     <td>{{ $cart->product->price }}</td>
                                     <td>{{ $cart->amount }}</td>

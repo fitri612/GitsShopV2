@@ -143,8 +143,15 @@ class ProductControllerv2 extends Controller
      */
     public function destroy(Product $product)
     {
+        if ($product->image) {
+            // delete image from public folder
+            $image_path = public_path() . '/images/' . $product->image;
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
+        }
         // Delete image product from store
-        Storage::delete($product->image);
+        // Storage::delete($product->image);
         // Delete product from database
         $product->delete();
         return Redirect::route('index_product');
