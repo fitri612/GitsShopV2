@@ -57,7 +57,9 @@ class ProductControllerv2 extends Controller
         $file = $request->file('image');
         $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
 
-        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+        // Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+
+        $file->move(public_path('images'), $path);
 
         Product::create([
             'name' => $request->name,
@@ -102,6 +104,7 @@ class ProductControllerv2 extends Controller
      */
     public function update(Product $product, Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
