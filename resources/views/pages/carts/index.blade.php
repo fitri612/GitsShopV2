@@ -20,7 +20,7 @@
                         <div class="card-group m-auto">
                             @foreach ($carts as $cart)
                                 <div class="card m-3" style="width: 14rem;">
-                                    <img class="card-img-top" src="{{ url('storage/' . $cart->product->image) }}">
+                                    <img class="card-img-top" src="{{ url('images/' . $cart->product->image) }}">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $cart->product->name }}</h5>
                                         <form action="{{ route('update_cart', $cart) }}" method="post">
