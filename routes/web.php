@@ -42,9 +42,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/product/{product}/edit', [ProductController::class, 'edit_product'])->name('edit_product');
     Route::patch('/product/{product}/update', [ProductController::class, 'update_product'])->name('update_product');
     Route::delete('/product/{product}', [ProductController::class, 'delete_product'])->name('delete_product');
-    Route::post('/order/{order}/confirm', [OrderController::class, 'confirm_payment'])->name('confirm_payment');
-
+    
     // V2 Routes product
+    Route::post('/order/{order}/confirm', [OrderController::class, 'confirm_payment'])->name('confirm_payment');
     Route::get('/productV2', [ProductControllerv2::class, 'index'])->name('index.productV2');
     Route::get('/productV2/create', [ProductControllerv2::class, 'create'])->name('create.productV2');
     Route::post('/productV2/create', [ProductControllerv2::class, 'store'])->name('store.productV2');
