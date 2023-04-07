@@ -15,8 +15,13 @@ class Transaction extends Model
         'product' => 'array'
     ];
 
-    public function transaction()
+    public function transaction_details()
     {
-        return $this->belongsTo(Transaction::class);
+        return $this->hasMany(TransactionDetail::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

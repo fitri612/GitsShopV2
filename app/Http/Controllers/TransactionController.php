@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Transaction;
+use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
@@ -39,27 +41,75 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        $total = $request->input('total');
-        $cash = $request->input('cash');
-        $change = $cash - $total;
-        dd($total);
-        dd($cash);
-        dd($change);
+        
+        try {
+            DB::beginTransaction();
+            $carts = Cart::with('product')->get();
+
+            $total = 0;
+
+            foreach ($carts as $cart) {
+                $total += (int) $cart->product->price * (int) $cart->amount;
+            }
 
 
+            $cash = $request->input('cash');
+            $change = $cash - $total;
 
-        // if ($change < 0) {
-        //     return redirect()->back()->with('error', 'Invalid cash amount.');
-        // }
 
-        // // Lakukan proses checkout / pembayaran di sini
-        // // Contoh: simpan transaksi ke database, kurangi stok barang, dsb.
-        // // Kosongkan keranjang belanja
+            // Generate Invoice Code
+            $length = 10;
+            $random = "";
+            $characters = array_merge(range('A', 'Z'), range('0', '9'));
+            $max = count($characters) - 1;
+            for ($i = 0; $i < $length; $i++) {
+                $rand = mt_rand(0, $max);
+                $random .= $characters[$rand];
+            }
+            $code_invoice = "POS-" . $random;
 
-        // Cart::truncate();
+            $transaction = Transaction::create([
+                'user_id' => auth()->user()->id,
+                'code_invoice' => $code_invoice,
+                'cash' => $cash,
+                'change' => $change,
+                'grand_total' => $total
+            ]);
 
-        // return redirect()->route('cart.index')->with('success', 'Transaction successful. Change: Rp. ' . number_format($change));
+            foreach ($carts as $cart) {
+                $product = Product::where('id', $cart->product_id)->first(['id', 'category_id', 'name', 'image', 'description', 'price', 'stock']);
 
+                TransactionDetail::create([
+                    'transaction_id' => $transaction->id,
+                    'product' => $product,
+                    'qty' => $cart->amount,
+                    'price' => $product->price
+                ]);
+
+                // Kurangi stok produk
+                $current_stock = $product->stock - $cart->amount;
+                $product->update([
+                    'stock' => $current_stock
+                ]);
+
+                // hapus data produk yang di cart
+                $cart->delete();
+            }
+
+            DB::commit();
+
+            // dd(Transaction::with(['user', 'transaction_detail'])->get());
+            
+            
+            return view('pages.prints.invoice', [
+                'data' => Transaction::with('user', 'transaction_details')->findOrFail($transaction->id)
+            ]);
+            // dd(Transaction::where('id', $transaction->id)->with('transaction_details')->get());
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e);
+            // return redirect()->back();
+        }
     }
 
     /**

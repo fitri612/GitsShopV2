@@ -78,7 +78,7 @@
                                             data-target="#exampleModal{{ $cart->id }}">
                                             Edit
                                         </button>
-                                        <form action="#" method="post">
+                                        <form action="{{ route('delete_cart', $cart) }}" method="post">
                                             @csrf
                                             <button type="submit" class="btn btn-danger">Remove</button>
                                         </form>
