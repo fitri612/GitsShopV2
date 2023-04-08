@@ -1,148 +1,112 @@
-body{
-    background-color: rgb(240, 240, 244);
-
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* font-family: "Satoshi", sans-serif; */
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
 }
-.pembungkus-kartu{
-    display: grid;
-    grid-template-columns: 300px 300px 300px 300px   ;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 60px;
-    margin-bottom: 40px
-    ;
-}
-
-.kartu{
-    background-color:white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;;
-    transition: .3s;
+/* https://www.happyhues.co/palettes/6 */
+:root {
+    --bg-color: #fffffe;
+    --headline: #2b2c34;
+    --text-color: #2b2c34;
+    --button-color: #6246ea;
+    --card-bg: #d1d1e9;
+    --card-heading: #2b2c34;
+    --card-text: #2b2c34;
 }
 
-.kartu:hover{
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    transition: all 0.4s ease;
+    background: var(--bg-color);
+    z-index: 10;
+    box-shadow: 0px 8px 6px -6px rgba(0, 0, 0, 0.2);
 }
 
-img{
-    width: 200px;
-    margin: 20px 40px ;
-}
-
-.nama h4{
-    color: rgb(70, 70, 70);
-}
-
-.deskripsi p{
-    color: rgb(116, 116, 116);
-    text-align: center;
-    margin:0px 5px 20px 0px;
-}
-
-.harga h4{
-    font-weight: bold;
-    color:rgb(235, 143, 6);
-}
-
-.keranjang{
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: red;;
-}
-
-.keranjang a:hover{
-    background-color: rgb(9, 112, 64);
-    
-}
-
-.keranjang a{
-    background-color: rgb(25, 135, 84);
-    padding: 8px 50px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: white;
-    letter-spacing: .5px;
-    width: 80%;
-}
-
-.card-create{
-    display: grid;
-    grid-template-areas: auto auto;
-}
-
-
-.gambarr img{
-    padding: 30px 15px;
-    border-radius: 5px;
-    background-color: rgb(233, 236, 239);
-}
-
-/* form login */
-
-.pembungkus-card-login{
-    width: 35%;
+nav .nav-content {
+    height: 100%;
+    max-width: 1500px;
     margin: auto;
-    margin-top: 10vh;
-}
-
-.card-login{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-
-.card-login .judul-login h3{
-    color: rgb(138, 137, 137);
-    margin: 20px 0px;
-}
-
-.card-login .isi-login{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin: 50px 0px 20px 0px;
-}
-
-.isi-login input{
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 10px 15px;
-    margin-bottom: 20px;
-}
-
-.isi-login button{
-    padding: 10px 15px;
-    background-color: rgb(92, 206, 147);
-    border:none;
-    border-radius: 5px;
-    color: white;
-    font-size: 1.1em;
-    transition: .2s;
-}
-
-.isi-login button:hover{
-    background-color: rgb(53, 165, 107);
-
-}
-
-.bantuan {
-    display: flex;
     justify-content: space-between;
-    margin-top: 10px;
 }
 
-.bantuan p{
-    color: #646363;
+.logo {
+    display: inline-flex;
+    align-items: center;
 }
 
-.bantuan a{
+nav .logo a {
+    font-weight: 500;
+    font-size: 35px;
+    color: var(--head-text);
     text-decoration: none;
+}
 
+.search-box {
+    padding-left: 30px;
+}
+
+.search-box input {
+    border: none;
+
+    width: 500px;
+    height: 30px;
+}
+
+@media (max-width: 600px) {
+    .search-box input {
+        width: 100%;
+    }
+}
+
+.search-box button {
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+}
+.search-box button:hover {
+    font-size: 15px;
+    transition: all ease-in-out 0.3s;
+}
+
+.nav-content .nav-links {
+    display: inline-flex;
+    align-items: center;
+}
+.nav-content .nav-links li {
+    list-style: none;
+    margin: 0 8px;
+}
+.nav-content .nav-links .link {
+    background: var(--button-color);
+
+    list-style: none;
+    margin: 0 8px;
+}
+.nav-links li a {
+    text-decoration: none;
+    color: #0e2431;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 4px;
+    transition: all 0.3s ease;
+}
+.nav-links li a:hover {
+    color: #4070f4;
+}
+
+.main-container {
+    margin-top: 130px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+    /* background: #4070f4; */
 }

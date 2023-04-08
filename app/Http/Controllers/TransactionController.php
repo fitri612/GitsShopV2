@@ -41,7 +41,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         try {
             DB::beginTransaction();
             $carts = Cart::with('product')->get();
@@ -97,18 +97,14 @@ class TransactionController extends Controller
             }
 
             DB::commit();
-
-            // dd(Transaction::with(['user', 'transaction_detail'])->get());
-            
-            
             return view('pages.prints.invoice', [
                 'data' => Transaction::with('user', 'transaction_details')->findOrFail($transaction->id)
             ]);
             // dd(Transaction::where('id', $transaction->id)->with('transaction_details')->get());
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e);
-            // return redirect()->back();
+            // dd($e);
+            return redirect()->back();
         }
     }
 
@@ -155,5 +151,24 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         //
+    }
+
+    public function index_history(Transaction $transaction)
+    {
+        $transaction = Transaction::all();
+        $transaction_details = TransactionDetail::all();
+        return view('pages.transaksi.index', compact('transaction', 'transaction_details'));
+    }
+
+    public function history_transaction()
+    {
+        $transactions = Transaction::with('user', 'transaction_details')->get();
+        return view('pages.transactions.index', compact('transactions'));
+    }
+
+    public function print_invoice($id)
+    {
+        $data = Transaction::with('user', 'transaction_details')->findOrFail($id);
+        return view('pages.prints.invoice', compact('data'));
     }
 }

@@ -19,7 +19,7 @@
                 <h4 class="card-title">Categories Fix</h4>
             </div>
             <div class="d-flex justify-content-between mt-3 px-3">
-                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addCategoryModal">Add
+                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add
                     Category</button>
             </div>
             <div class="card-body">
@@ -38,8 +38,8 @@
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#editCategoryModal{{ $category->id }}">Edit</button>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#editCategoryModal{{ $category->id }}">Edit</button>
                                         <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
                                             class="d-inline">
                                             @csrf
@@ -57,14 +57,12 @@
     </div>
 
     <!-- Add Category Modal -->
-    <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+    <div class="modal" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addCategoryModalLabel">Add Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('categories.store') }}">
@@ -88,15 +86,13 @@
 
     <!-- Edit Category Modal -->
     @foreach ($categories as $category)
-        <div class="modal fade" id="editCategoryModal{{ $category->id }}" aria-labelledby="editCategoryModalLabel"
+        <div class="modal " id="editCategoryModal{{ $category->id }}" aria-labelledby="editCategoryModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="editCategoryModalLabel">Edit Category</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form method="POST" action="{{ route('categories.update', ['id' => $category->id]) }}">
