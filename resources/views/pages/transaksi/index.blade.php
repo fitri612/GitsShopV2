@@ -36,22 +36,25 @@
                             </div>
                             <div class="modal-body">
                                 <ul>
-                                    <li>Total: {{ $item->Cash }}</li>
+                                    <li>Total: Rp{{ $item->cash }}</li>
+                                    <li>Kembalian: Rp{{ $item->change }}</li>
+                                    <li>Create at: {{ $item->created_at }}</li>
+                                    <br>
                                     <li>Data:</li>
-                                    <ul>
-                                        @foreach ($transaction_details as $item)
+                                    <!-- Tambahkan kode untuk menampilkan detail transaksi berdasarkan ID-nya -->
+                                    @foreach ($transaction_details as $temp)
+                                        @if ($temp->transaction_id == $item->id)
                                             @php
-                                                $product = json_decode($item->product);
+                                                $product = json_decode($temp->product);
                                             @endphp
                                             <li>{{ $product->name }} </li>
                                             <li>{{ $product->price }} </li>
                                             <li>{{ $product->description }} </li>
-                                            <li>{{ $item->qty }} </li>
-                                            <li>{{ $item->price }} </li>
-                                            <li>{{ $item->created_at }} </li>
-                                        @endforeach
-                                    </ul>
-
+                                            <li>{{ $temp->qty }}</li>
+                                            <li>{{ $temp->price }}</li>
+                                            <br>
+                                        @endif
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="modal-footer">
@@ -60,10 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- End Detail History Modal -->
             @endforeach
         </tbody>
     </table>
-
-    <!-- Detail History Modal -->
 @endsection
