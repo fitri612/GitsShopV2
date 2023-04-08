@@ -27,7 +27,6 @@
                                         </div>
                                     </div>
                                 </form>
-
                                 @if (Auth::check() && Auth::user()->is_admin)
                                     <form action="{{ route('destroy.productV2', $product) }}" method="post">
                                         @method('delete')
@@ -74,13 +73,15 @@
                                     <td>{{ $cart->amount }}</td>
 
                                     <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#exampleModal{{ $cart->id }}">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal{{ $cart->id }}">
                                             Edit
                                         </button>
-                                        <form action="{{ route('delete_cart', $cart) }}" method="post">
+                                        <form action="{{ route('delete_cart', ['cart' => $cart->id]) }}" method="post">
                                             @csrf
+                                            @method('delete')
                                             <button type="submit" class="btn btn-danger">Remove</button>
+                                            
                                         </form>
                                     </td>
                                 </tr>
@@ -119,4 +120,34 @@
             </div>
         </div>
     </div>
+    
+    {{-- modal edit cart --}}
+    @foreach ($carts as $cart)
+        <div class="modal " id="exampleModal{{ $cart->id }}" aria-labelledby="editProductModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{{ route('update_cart', ['cart' => $cart->id]) }}"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            {{-- stock --}}
+                            <div class="form-group">
+                                <label for="amount">Stock</label>
+                                <input type="number" class="form-control"
+                                    id="amount" name="amount" value="{{ $cart->amount }}" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Update Product</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection
