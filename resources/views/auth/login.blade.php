@@ -4,7 +4,7 @@
 <div class="container">
     <form method="POST" action="{{ route('login') }}">
         @csrf
-        <div class="pembungkus-card-login">
+        <div class="pembungkus-kartu-login">
             @if (Session::has('success'))
             <div class="alert alert-success mt-3" role="alert">
                 <i class="fa-solid fa-circle-check"></i> {{Session::get('success')}} 
@@ -16,10 +16,10 @@
                     <i class="fa-solid fa-circle-check"></i> {{Session::get('error')}} 
                 </div>
             @endif
-            <div class="card-login">
+            <div class="kartu-login">
         
                 <div class="judul-login">
-                    <h3>Login</h3>
+                    <h3>Masuk</h3>
                 </div>
                 @if (Session::Has('errorLogin'))
                 <div class="alert alert-danger mt-3" role="alert">
@@ -41,9 +41,9 @@
                     @enderror
                     <input type="password" name="password" placeholder="password" 
                     class="@error('password') is-invalid @enderror" >
-                    <button type="submit">Sign In</button>
+                    <button type="submit">Masuk</button>
                     <div class="bantuan">
-                        <p>Dont have account ? <a href="{{ route('register') }}">Register</a> </p>
+                        <p>Belum Punya Akun ? <a href="{{ route('register') }}">Daftar</a> </p>
                         @if (Route::has('password.request'))
                         <a href="{{ route('password.request') }}">Forgot Password</a>
                         @endif
