@@ -44,7 +44,7 @@ class CartController extends Controller
             ]);
         }
 
-        return Redirect::route('transaction.cashier');
+        return Redirect::route('show_cart');
     }
 
     public function show_cart()
@@ -56,7 +56,6 @@ class CartController extends Controller
 
     public function update_cart(Cart $cart, Request $request)
     {
-        // dd($request);
         $request->validate([
             'amount' => 'required|gte:1|lte:' . $cart->product->stock
         ]);
@@ -65,7 +64,7 @@ class CartController extends Controller
             'amount' => $request->amount
         ]);
 
-        return Redirect::route('transaction.cashier');
+        return Redirect::route('show_cart');
     }
 
     public function delete_cart(Cart $cart)

@@ -64,7 +64,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/cart/{product}', [CartController::class, 'add_to_cart'])->name('add_to_cart');
     Route::get('/cart', [CartController::class, 'show_cart'])->name('show_cart');
-    Route::put('/cart/{cart}', [CartController::class, 'update_cart'])->name('update_cart');
+    Route::patch('/cart/{cart}', [CartController::class, 'update_cart'])->name('update_cart');
     Route::delete('/cart/{cart}', [CartController::class, 'delete_cart'])->name('delete_cart');
     Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
     Route::get('/order', [OrderController::class, 'index_order'])->name('index_order');
@@ -78,8 +78,6 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(TransactionController::class)->prefix('transaction')->name('transaction.')->group(function () {
         Route::get('index', 'cashier')->name('cashier');
         Route::post('store', 'store')->name('store');
-        Route::get('history', 'index_history')->name('history');
-        Route::get('print/{transaction}', 'print_invoice')->name('print');
     });
 
     // contoh yang lama

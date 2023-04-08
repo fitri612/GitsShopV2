@@ -43,17 +43,13 @@
                                 Create product
                             </a>
                         @else
-                            {{-- <a class="dropdown-item" href="{{ route('show_cart') }}">
+                            <a class="dropdown-item" href="{{ route('show_cart') }}">
                                 <i class="fa fa-cart-shopping " aria-hidden="true"></i>
                                 Cart
-                            </a> --}}
+                            </a>
                             <a class="dropdown-item" href="{{ route('transaction.cashier') }}">
                                 <i class="fa fa-cart-shopping " aria-hidden="true"></i>
                                 Casier
-                            </a>
-                            <a class="dropdown-item" href="{{ route('transaction.history') }}">
-                                <i class="fa fa-cart-shopping " aria-hidden="true"></i>
-                                Transaksi
                             </a>
                         @endif
 
