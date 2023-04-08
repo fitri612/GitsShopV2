@@ -29,10 +29,10 @@
                                             </div>
                                         </div>
                                     </form>
-                                @else
+                                {{-- @else
                                     <form action="{{ route('edit_product', $product) }}" method="get">
                                         <button type="submit" class="btn btn-primary">Edit product</button>
-                                    </form>
+                                    </form> --}}
                                 @endif
                             </div>
                         </div>

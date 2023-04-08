@@ -23,7 +23,11 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 Route::get('/', function () {
-    return Redirect::route('index_product');
+    if (Auth::check()) {
+        return redirect()->route('index_product');
+    } else {
+        return view('auth.login');
+    }
 });
 
 Auth::routes();

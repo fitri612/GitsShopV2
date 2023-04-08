@@ -155,16 +155,15 @@ class TransactionController extends Controller
 
     public function index_history(Transaction $transaction)
     {
-        $transaction = Transaction::all();
-        $transaction_details = TransactionDetail::all();
-        return view('pages.transaksi.index', compact('transaction', 'transaction_details'));
+        $transaction = Transaction::with('user','transaction_details')->get();
+        return view('pages.transaksi.index', compact('transaction'));
     }
 
-    public function history_transaction()
-    {
-        $transactions = Transaction::with('user', 'transaction_details')->get();
-        return view('pages.transactions.index', compact('transactions'));
-    }
+    // public function history_transaction()
+    // {
+    //     $transactions = Transaction::with('user', 'transaction_details')->get();
+    //     return view('pages.transactions.index', compact('transactions'));
+    // }
 
     public function print_invoice($id)
     {
