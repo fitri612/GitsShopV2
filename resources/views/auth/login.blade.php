@@ -2,7 +2,63 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+        <div class="pembungkus-card-login">
+            @if (Session::has('success'))
+            <div class="alert alert-success mt-3" role="alert">
+                <i class="fa-solid fa-circle-check"></i> {{Session::get('success')}} 
+            </div>
+            @endif
+
+            @if (Session::has('error'))
+                <div class="alert alert-danger mt-3" role="alert">
+                    <i class="fa-solid fa-circle-check"></i> {{Session::get('error')}} 
+                </div>
+            @endif
+            <div class="card-login">
+        
+                <div class="judul-login">
+                    <h3>Login</h3>
+                </div>
+                @if (Session::Has('errorLogin'))
+                <div class="alert alert-danger mt-3" role="alert">
+                    <i class="fa-solid fa-circle-exclamation"></i> {{Session::get('errorLogin')}} 
+                </div>
+                @endif
+                <div class="isi-login">
+                    @error('username')
+                    <div class="text-danger">
+                        {{$message}}
+                    </div>
+                    @enderror
+                    <input type="text" name="email" placeholder="email" class="@error('username') is-invalid @enderror" 
+                    value="{{old('email')}}" >
+                    @error('password')
+                    <div class="text-danger">
+                    {{$message}}
+                    </div>
+                    @enderror
+                    <input type="password" name="password" placeholder="password" 
+                    class="@error('password') is-invalid @enderror" >
+                    <button type="submit">Sign In</button>
+                    <div class="bantuan">
+                        <p>Dont have account ? <a href="{{ route('register') }}">Register</a> </p>
+                        @if (Route::has('password.request'))
+                        <a href="{{ route('password.request') }}">Forgot Password</a>
+                        @endif
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+
+
+    {{-- <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
@@ -68,6 +124,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection

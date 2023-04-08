@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductControllerv2;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -42,16 +43,15 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/product/{product}/edit', [ProductController::class, 'edit_product'])->name('edit_product');
     Route::patch('/product/{product}/update', [ProductController::class, 'update_product'])->name('update_product');
     Route::delete('/product/{product}', [ProductController::class, 'delete_product'])->name('delete_product');
-    Route::post('/order/{order}/confirm', [OrderController::class, 'confirm_payment'])->name('confirm_payment');
 
     // V2 Routes product
+    Route::post('/order/{order}/confirm', [OrderController::class, 'confirm_payment'])->name('confirm_payment');
     Route::get('/productV2', [ProductControllerv2::class, 'index'])->name('index.productV2');
     Route::get('/productV2/create', [ProductControllerv2::class, 'create'])->name('create.productV2');
     Route::post('/productV2/create', [ProductControllerv2::class, 'store'])->name('store.productV2');
     Route::delete('/productV2/{product}', [ProductControllerv2::class, 'destroy'])->name('destroy.productV2');
     Route::get('/productV2/{product}/edit', [ProductControllerv2::class, 'edit'])->name('edit.productV2');
     Route::put('/productV2/{product}', [ProductControllerv2::class, 'update'])->name('update.productV2');
-    
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -72,4 +72,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/order/{order}/pay', [OrderController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');
     Route::get('/profile', [ProfileController::class, 'show_profile'])->name('show_profile');
     Route::post('/profile', [ProfileController::class, 'edit_profile'])->name('edit_profile');
+
+    //  Route Cashier
+    // prefix === /
+    Route::controller(TransactionController::class)->prefix('transaction')->name('transaction.')->group(function () {
+        Route::get('index', 'cashier')->name('cashier');
+        Route::post('store', 'store')->name('store');
+    });
+
+    // contoh yang lama
+    // Route::get('/transaction', [TransactionController::class,'index'])->name('transaction');
 });
