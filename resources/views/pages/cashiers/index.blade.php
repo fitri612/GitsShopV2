@@ -180,7 +180,7 @@
                     </div> <!-- box.// -->
                 </div>
             </div>
-        </div><!-- container //  -->
+        </div>
     </section>
 
     {{-- modal edit cart --}}
