@@ -32,9 +32,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 Route::get('/product', [ProductControllerv2::class, 'index_product'])->name('index_product');
 
 Route::middleware(['admin'])->group(function () {
+    Route::get('/admin', [ProductControllerv2::class, 'index_admin'])->name('index_admin');
     Route::get('/category', [CategoriesController::class, 'index'])->name('category.index');
     Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
     Route::delete('/categories/{id}', [CategoriesController::class, 'destroy'])->name('categories.destroy');
@@ -76,7 +78,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/order/{order}/pay', [OrderController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');
     Route::get('/profile', [ProfileController::class, 'show_profile'])->name('show_profile');
     Route::post('/profile', [ProfileController::class, 'edit_profile'])->name('edit_profile');
-
+    
+    // show profile admin
+    Route::get('/setting', [ProfileController::class, 'show_profile_admin'])->name('show_profile_admin');
     //  Route Cashier
     // prefix === /
     Route::controller(TransactionController::class)->prefix('transaction')->name('transaction.')->group(function () {

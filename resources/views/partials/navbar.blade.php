@@ -9,8 +9,6 @@
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
         <ul class="nav-links">
-            <li><button class="btn btn-success">cart</button></li>
-
             @guest
                 @if (Route::has('login'))
                     <li><a href="{{ route('login') }}"><button class="btn btn-primary">masuk</button></a></li>
@@ -32,21 +30,15 @@
                                 <i class="fa-solid fa-list"></i>
                                 Categories
                             </a>
-                        @endif
-                        @if (Auth::user()->is_admin)
+                            @endif
+                         @if (Auth::user()->is_admin)
                             <a class="dropdown-item" href="{{ route('index.productV2') }}">
                                 <i class="fa-solid fa-cart-plus"></i>
                                 Create product V2
                             </a>
-                            <a class="dropdown-item" href="{{ route('create_product') }}">
-                                <i class="fa-solid fa-cart-plus"></i>
-                                Create product
-                            </a>
+                            
                         @else
-                            {{-- <a class="dropdown-item" href="{{ route('show_cart') }}">
-                                <i class="fa fa-cart-shopping " aria-hidden="true"></i>
-                                Cart
-                            </a> --}}
+                            
                             <a class="dropdown-item" href="{{ route('transaction.cashier') }}">
                                 <i class="fa fa-cart-shopping " aria-hidden="true"></i>
                                 Casier

@@ -19,6 +19,12 @@ class ProfileController extends Controller
         $user = Auth::user();
         return view('pages.profile.index', compact('user'));
     }
+    
+    public function show_profile_admin()
+    {
+        $user = Auth::user();
+        return view('admin.profile.profileadmin', compact('user'));
+    }
 
     public function edit_profile(Request $request)
     {

@@ -177,4 +177,11 @@ class ProductControllerv2 extends Controller
         $products = Product::all();
         return view('dashboard_casier', compact('products'));
     }
+    
+    
+    public function index_admin()
+    {
+        $products = Product::all();
+        return view('admin.product.indexadmin', compact('products'));
+    }
 }
