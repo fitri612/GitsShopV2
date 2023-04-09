@@ -178,6 +178,8 @@
                             </div>
                         </form>
                     </div> <!-- box.// -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
