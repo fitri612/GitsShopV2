@@ -25,10 +25,65 @@
                     Product</button>
             </div>
             {{-- card datanya --}}
-            <div class="container">
+            
+            <div class="card  m-3"  style="background-color: rgb(240, 240, 244) ;box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;">    
+                <table class="table table-bordered border-white text-center">
+                    <thead class="table-dark">
+                        <th>No</th>
+                        <th>Gambar</th>
+                        <th>Nama</th>
+                        <th>Deskripsi</th>
+                        <th>Kategori</th>
+                        <th>Harga</th>
+                        <th>detail</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </thead>
+                    
+                    @foreach ($products as $item)
+                    <tbody>
+                        <td>{{$loop->iteration}}</td>
+                        <td>
+                            @if ($item->image)
+                            <img src="{{ url('images/' . $item->image) }}" alt="" class="img-thumbnail rounded" style="max-width: 70px;height:70px;margin:0;object-fit: cover;">
+                            @endif
+                        </td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->description}}</td>
+                        <td>{{$item->category->name}}</td>
+                        <td>{{$item->price}}</td>
+                        <td>
+                            <form action="{{ route('show.productV2', $item) }}" method="get">
+                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-book"></i></button>
+                            </form>
+                            
+                        </td>
+                        @if (Auth::check() && Auth::user()->is_admin)
+                        <td>
+                            <button type="button" class="btn btn-primary " data-bs-toggle="modal"
+                                data-bs-target="#editProductModal{{ $item->id }}">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <form action="{{ route('delete_product', $item) }}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger "><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </td>
+                        @endif
+                    </tbody>
+                    @endforeach
+                </table>
+            </div>
+
+            {{-- <div class="container">
                 <h2 class="text-center">{{ __('Products') }}</h2>
                 <div class="row row-cols-1 row-cols-md-3 justify-content-center">
                     @foreach ($products as $product)
+
+                    
                         <div class="card shadow-lg m-3 p-3 mb-5  " style="width:18rem">
                             <img class="card-img-tops" style="height: 250px" src="{{ url('images/' . $product->image) }}"
                                 alt="Card image cap">
@@ -55,7 +110,7 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
@@ -192,4 +247,5 @@
             </div>
         </div>
     @endforeach
+    <script src="https://kit.fontawesome.com/82ebf8392e.js" crossorigin="anonymous"></script>
 @endsection
