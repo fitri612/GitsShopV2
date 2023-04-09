@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
     @include('pages.carts.detail.index')
 @endsection
 
