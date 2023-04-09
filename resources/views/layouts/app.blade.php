@@ -139,7 +139,12 @@
 
     @include('partials.navbar')
    <div class="main-container">
-    @yield('content')
+    <div class="content1">
+        @yield('content')
+    </div>
+    <div class="content2">
+        @yield('content1')
+    </div>
    </div>
 
 </body>
