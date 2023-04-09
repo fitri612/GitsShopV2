@@ -7,7 +7,7 @@
         </div>
         <a href="{{ route('category.index') }}"><i class="fa-solid fa-list"></i> Category</a>
         <a href="{{ route('index.productV2') }}">
-            <i class="fa-solid fa-cart-plus"></i> Product</a>
+            <i class="fa-solid fa-cart-plus"></i> Products</a>
     </div>
 
     <div class="nav-content">
