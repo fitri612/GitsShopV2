@@ -18,7 +18,17 @@ class ProductControllerv2 extends Controller
     public function index()
     {
         $categories = Categories::all();
-        $products = Product::with('category')->get();
+        $products = Product::with('category');
+
+        if ($category_id) {
+            $products = $products->where('category_id', $category_id);
+        }
+
+        $products = $products->get();
+
+
+
+
         // dd($products);
         return view('pages.products.index', compact('products', 'categories'));
     }

@@ -1935,6 +1935,7 @@ ul.row, ul.row-sm {
     padding: 15px;
     border-top: 1px solid #eee; }
   .card-product .title {
+    height: 40px;
     margin-top: 0; }
   .card-product .btn-overlay {
     -webkit-transition: .5s;
@@ -2195,7 +2196,9 @@ ul.row, ul.row-sm {
     overflow: hidden; }
     .rating-stars li.stars-active i {
       color: orange; }
-
+.active {
+    background-color: #28a745 !important;
+}
 .divider-text {
   position: relative;
   text-align: center;

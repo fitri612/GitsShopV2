@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Categories;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
@@ -18,9 +19,10 @@ class TransactionController extends Controller
      */
     public function cashier()
     {
+        $categories = Categories::all();
         $products = Product::all();
         $carts = Cart::all();
-        return view('pages.cashiers.index', compact('products', 'carts'));
+        return view('pages.cashiers.index', compact('products', 'carts', 'categories'));
     }
 
     /**
