@@ -125,7 +125,7 @@
                                             </td>
                                             <td>
                                                 <div class="price-wrap">
-                                                    <var class="price">Rp{{ $cart->product->price * $cart->amount }}</var>
+                                                    <var class="price">Rp{{ $cart->product->price }}</var>
                                                 </div> <!-- price-wrap .// -->
                                             </td>
                                             <td class="text-right">
@@ -157,23 +157,26 @@
                             <dt>Total: </dt>
                             <dd class="text-right h4 b"> {{ $total_price }} </dd>
                         </dl>
-                        <dl class="dlist-align">
-                            <dt>Cash: </dt>
-                            <dd class="text-right h4 b"> <input type="number" class="form-control " id="cash"
-                                    name="cash" value="" placeholder="Cash" required></dd>
-                        </dl>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="#" class="btn  btn-default btn-error btn-lg btn-block"><i
-                                        class="fa fa-times-circle "></i> Cancel </a>
+                        <form action="{{ route('transaction.store') }}" method="post">
+                            @csrf
+                            <dl class="dlist-align">
+                                <dt>Cash: </dt>
+                                <dd class="text-right h4 b"> <input type="number" class="form-control " id="cash"
+                                        name="cash" value="" placeholder="Cash" required></dd>
+                            </dl>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="#" class="btn  btn-default btn-error btn-lg btn-block"><i
+                                            class="fa fa-times-circle "></i> Cancel </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn  btn-success btn-lg btn-block"
+                                        onclick="return confirm('Are you sure you want to checkout?')"><i
+                                            class="fa fa-shopping-bag"></i>
+                                        Paid </button>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <button class="btn  btn-success btn-lg btn-block"
-                                    onclick="return confirm('Are you sure you want to checkout?')"><i
-                                        class="fa fa-shopping-bag"></i>
-                                    Paid </button>
-                            </div>
-                        </div>
+                        </form>
                     </div> <!-- box.// -->
                 </div>
             </div>
