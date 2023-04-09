@@ -164,12 +164,12 @@
                                 <dd class="text-right h4 b"> <input type="number" class="form-control " id="cash"
                                         name="cash" value="" placeholder="Cash" required></dd>
                             </dl>
-                            <div class="row">
-                                <div class="col-md-6">
+                            <div class="align-items-center">
+                                {{-- <div class="col-md-6">
                                     <a href="#" class="btn  btn-default btn-error btn-lg btn-block"><i
                                             class="fa fa-times-circle "></i> Cancel </a>
-                                </div>
-                                <div class="col-md-6">
+                                </div> --}}
+                                <div class="col-md-12">
                                     <button class="btn  btn-success btn-lg btn-block"
                                         onclick="return confirm('Are you sure you want to checkout?')"><i
                                             class="fa fa-shopping-bag"></i>
@@ -190,7 +190,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                        <h5 class="modal-title" id="editProductModalLabel">Edit</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -200,12 +200,12 @@
                             @method('PUT')
                             {{-- stock --}}
                             <div class="form-group">
-                                <label for="amount">Stock</label>
+                                <label for="amount">Quantity</label>
                                 <input type="number" class="form-control" id="amount" name="amount"
                                     value="{{ $cart->amount }}" required>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Update Product</button>
+                            <button type="submit" class="btn btn-primary">Update Quantity</button>
                         </form>
                     </div>
                 </div>
