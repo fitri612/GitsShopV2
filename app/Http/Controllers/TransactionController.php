@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Categories;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
@@ -18,9 +19,10 @@ class TransactionController extends Controller
      */
     public function cashier()
     {
+        $categories = Categories::all();
         $products = Product::all();
         $carts = Cart::all();
-        return view('pages.cashiers.index', compact('products', 'carts'));
+        return view('pages.cashiers.index', compact('products', 'carts', 'categories'));
     }
 
     /**
@@ -155,16 +157,15 @@ class TransactionController extends Controller
 
     public function index_history(Transaction $transaction)
     {
-        $transaction = Transaction::all();
-        $transaction_details = TransactionDetail::all();
-        return view('pages.transaksi.index', compact('transaction', 'transaction_details'));
+        $transaction = Transaction::with('user','transaction_details')->get();
+        return view('pages.transaksi.index', compact('transaction'));
     }
 
-    public function history_transaction()
-    {
-        $transactions = Transaction::with('user', 'transaction_details')->get();
-        return view('pages.transactions.index', compact('transactions'));
-    }
+    // public function history_transaction()
+    // {
+    //     $transactions = Transaction::with('user', 'transaction_details')->get();
+    //     return view('pages.transactions.index', compact('transactions'));
+    // }
 
     public function print_invoice($id)
     {

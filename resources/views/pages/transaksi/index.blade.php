@@ -16,8 +16,8 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <th>{{ $item->code_invoice }}</th>
-                    <th>{{ $item->cash }}</th>
-                    <th>{{ $item->change }}</th>
+                    <th>Rp{{ number_format($item->cash) }}</th>
+                    <th>Rp{{ number_format($item->change) }}</th>
                     <td>
                         <a href="{{ route('transaction.print', $item->id) }}" class="btn btn-primary">Cetak</a>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -42,7 +42,7 @@
                                     <br>
                                     <li>Data:</li>
                                     <!-- Tambahkan kode untuk menampilkan detail transaksi berdasarkan ID-nya -->
-                                    @foreach ($transaction_details as $temp)
+                                    @foreach ($item->transaction_details as $temp)
                                         @if ($temp->transaction_id == $item->id)
                                             @php
                                                 $product = json_decode($temp->product);

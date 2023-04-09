@@ -20,9 +20,22 @@
                 <h4 class="card-title">Categories Fix</h4>
             </div>
             <div class="d-flex justify-content-between mt-3 px-3">
-                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add
+                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
+                    data-bs-target="#addCategoryModal">Add
                     Category</button>
             </div>
+
+            {{-- Message form validation error --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped">

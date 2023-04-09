@@ -19,6 +19,18 @@ class ProductControllerv2 extends Controller
     {
         $categories = Categories::all();
         $products = Product::with('category')->get();
+
+        
+        
+        // if ($category_id) {
+        //     $products = $products->where('category_id', $category_id);
+        // }
+
+        // $products = $products->get();
+
+
+
+
         // dd($products);
         return view('pages.products.index', compact('products', 'categories'));
     }
@@ -48,7 +60,7 @@ class ProductControllerv2 extends Controller
             'price' => 'required',
             'stock' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required'
         ]);
 

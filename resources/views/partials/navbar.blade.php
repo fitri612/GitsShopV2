@@ -21,7 +21,7 @@
             <a href="/" style="color:#00214d">Lemon Shop</a>
         </div>
         <form class="search-box">
-            <input type="text" placeholder=" Cari produk....">
+            <input type="text" id="searchInput" onkeyup="searchByName()" placeholder="Search by name...">
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
         <ul class="nav-links">
