@@ -125,7 +125,7 @@
                                             </td>
                                             <td>
                                                 <div class="price-wrap">
-                                                    <var class="price">Rp{{ $cart->product->price * $cart->amount }}</var>
+                                                    <var class="price">Rp{{ $cart->product->price }}</var>
                                                 </div> <!-- price-wrap .// -->
                                             </td>
                                             <td class="text-right">
@@ -174,10 +174,10 @@
                                     Paid </button>
                             </div>
                         </div>
-                    </div> <!-- box.// -->
+                    </div>
                 </div>
             </div>
-        </div><!-- container //  -->
+        </div>
     </section>
 
     {{-- modal edit cart --}}
