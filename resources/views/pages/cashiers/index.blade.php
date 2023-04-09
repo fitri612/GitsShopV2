@@ -37,43 +37,43 @@
                                             <div class="action-wrap">
                                                 <form action="{{ route('add_to_cart', $product) }}" method="post">
                                                     @csrf
-                                                    <div class="py-5">
+                                                    <div class="py-1">
                                                         <div class="m-btn-group m-btn-group--pill btn-group mr-2"
                                                             role="group" aria-label="...">
                                                             <button type="button" class="m-btn btn btn-default"
-                                                                onclick="decrementValue()"><i
-                                                                    class="fa fa-minus"></i></button>`
+                                                                onclick="decrementValue('amountInput{{ $product->id }}')"><i
+                                                                    class="fa fa-minus"></i></button>
                                                             <input type="text" class="form-control"
                                                                 aria-describedby="basic-addon2" name="amount"
-                                                                id="amountInput" value="1" min="1">
+                                                                id="amountInput{{ $product->id }}" value="1"
+                                                                min="1">
                                                             <button type="button" class="m-btn btn btn-default"
-                                                                onclick="incrementValue()"><i
+                                                                onclick="incrementValue('amountInput{{ $product->id }}')"><i
                                                                     class="fa fa-plus"></i></button>
                                                         </div>
+                                                    </div>
+                                                    <div class="py-5">
+                                                        <button type="submit" class="btn btn-success btn-xl float-right">
+                                                            <i class="fa fa-cart-plus"></i> Add
+                                                        </button>
+                                                        <div class="price-wrap h5">
+                                                            <span class="price-new">Rp {{ $product->price }}</span>
+                                                        </div>
+                                                        @if (Auth::check() && Auth::user()->is_admin)
+                                                            <form action="{{ route('destroy.productV2', $product) }}"
+                                                                method="post">
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button type="submit"
+                                                                    class="btn btn-danger mt-2 btn-xl float-right">Delete
+                                                                    product</button>
+                                                            </form>
+                                                        @endif
                                                     </div>
                                                 </form><!-- price-wrap.// -->
                                             </div><!-- action-wrap -->
                                         </figcaption>
-                                        <div class="py-1">
-                                            <form action="{{ route('add_to_cart', $product) }}" method="post">
-                                                <button type="submit" class="btn btn-success btn-xl float-right">
-                                                    <i class="fa fa-cart-plus"></i> Add
-                                                </button>
-                                                <div class="price-wrap h5">
-                                                    <span class="price-new">Rp {{ $product->price }}</span>
-                                                </div>
-                                                @if (Auth::check() && Auth::user()->is_admin)
-                                                    <form action="{{ route('destroy.productV2', $product) }}"
-                                                        method="post">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button type="submit"
-                                                            class="btn btn-danger mt-2 btn-xl float-right">Delete
-                                                            product</button>
-                                                    </form>
-                                                @endif
-                                            </form><!-- price-wrap.// -->
-                                        </div>
+
                                     </figure> <!-- card // -->
                                 </div>
                             @endforeach <!-- col // -->

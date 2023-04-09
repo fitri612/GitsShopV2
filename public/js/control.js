@@ -11,14 +11,16 @@ $(function () {
     $("#cart").height(445);
     $("#cart").overlayScrollbars({});
 });
-function incrementValue() {
-    var inputElement = document.getElementById("amountInput");
+
+
+function incrementValue(id) {
+    var inputElement = document.getElementById(id);
     var currentValue = parseInt(inputElement.value);
     inputElement.value = currentValue + 1;
 }
 
-function decrementValue() {
-    var inputElement = document.getElementById("amountInput");
+function decrementValue(id) {
+    var inputElement = document.getElementById(id);
     var currentValue = parseInt(inputElement.value);
     if (currentValue > 1) {
         inputElement.value = currentValue - 1;
