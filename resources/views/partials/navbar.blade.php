@@ -5,27 +5,29 @@
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
                     <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
                 </a>
-                <a href="{{ route('transaction.cashier') }}"
-                    class="list-group-item list-group-item-action py-2 ripple active">
+                <a href="{{ route('transaction.cashier') }}"   
+                    class="list-group-item list-group-item-action py-2 ripple">
                     <i class="fas fa-chart-area fa-fw me-3"></i><span>Cashier</span>
                 </a>
-                <a href="{{ route('transaction.history') }}"
+                <a href="{{ route('transaction.history') }}"  
                     class="list-group-item list-group-item-action py-2 ripple"><i
                         class="fas fa-lock fa-fw me-3"></i><span>Transaction</span></a>
-                <a href="{{ route('show_profile') }}" class="list-group-item list-group-item-action py-2 ripple"><i
-                        class="fas fa-chart-line fa-fw me-3"></i><span>Profile</span></a>
+                <a href="{{ route('show_profile') }}" 
+                    class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fa-solid fa-user fa-fw me-3"></i><span>Profile</span></a>
                 <li class="nav-item dropdown" style="list-style-type: none;">
                     <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
                         href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                        <i class="fas fa-chart-line fa-fw me-3"></i><span>{{ __('Logout') }}</span>
+                        <i class="fa-solid fa-right-from-bracket fa-fw me-3"></i><span>{{ __('Logout') }}</span>
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
 
                 </li>
+                
             </div>
         </div>
     </nav>
@@ -54,5 +56,10 @@
                 <span class="input-group-text border-0 btn btn-primary"><i class="fas fa-search"></i></span>
             </form>
         </div>
+
+        <!-- Container wrapper -->
+        
     </nav>
 </header>
+
+
