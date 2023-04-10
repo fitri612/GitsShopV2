@@ -3,7 +3,7 @@
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
-                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
+                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
                 </a>
                 <a href="{{ route('transaction.cashier') }}"   
                     class="list-group-item list-group-item-action py-2 ripple">
@@ -46,11 +46,17 @@
                 <strong class="ms-1">Lemon Shop</strong>
             </a>
             <!-- Search form -->
-            <form class="d-none d-md-flex input-group w-auto my-auto">
+            {{-- <form class="d-none d-md-flex input-group w-auto my-auto">
                 <input type="text" id="searchInput" onkeyup="searchByName()" placeholder="Search by name...">
                 <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+            </form> --}}
+            <form class="d-none d-md-flex input-group w-auto my-auto">
+                <input class="form-control" type="text" id="searchInput" onkeyup="searchByName()"
+                    placeholder="Search by name...">
+                <span class="input-group-text border-0 btn btn-primary"><i class="fas fa-search"></i></span>
             </form>
         </div>
+
         <!-- Container wrapper -->
         
     </nav>
