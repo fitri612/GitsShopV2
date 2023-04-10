@@ -5,6 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 card padding-y-sm card ">
+                    {{-- filter kategori --}}
                     <ul id="category-nav" class="nav bg radius nav-pills nav-fill mb-3 bg" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active show" data-toggle="pill" data-category-id="all" href="#">

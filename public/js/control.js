@@ -12,7 +12,6 @@ $(function () {
     $("#cart").overlayScrollbars({});
 });
 
-
 function incrementValue(id) {
     var inputElement = document.getElementById(id);
     var currentValue = parseInt(inputElement.value);
@@ -40,6 +39,33 @@ tabs.forEach((tab) => {
         e.target.classList.add("active");
         // Ambil target elemen tab-pane dan hapus kelas 'active' dari semua elemen tab-pane
         const target = document.querySelector(e.target.getAttribute("href"));
+        const tabPanes = document.querySelectorAll(".tab-pane");
+        tabPanes.forEach((pane) => pane.classList.remove("active"));
+        // Tambahkan kelas 'active' ke elemen tab-pane yang sesuai dengan target
+        target.classList.add("active");
+    });
+});
+
+// navbar item
+// Ambil semua elemen tab
+const navtab = document.querySelectorAll(".list-group-item");
+
+let activeTab = null; // variabel untuk menyimpan tab yang sedang aktif
+
+// Tambahkan event listener pada setiap tab
+navtab.forEach((tab) => {
+    tab.addEventListener("click", (e) => {
+        // Hapus kelas 'active' dari tab yang sedang aktif
+        if (activeTab) {
+            activeTab.classList.remove("active");
+        }
+        // Tambahkan kelas 'active' ke tab yang diklik
+        tab.classList.add("active");
+        // Simpan tab yang sedang aktif
+        activeTab = tab;
+
+        // Ambil target elemen tab-pane dan hapus kelas 'active' dari semua elemen tab-pane
+        const target = document.querySelector(tab.getAttribute("href"));
         const tabPanes = document.querySelectorAll(".tab-pane");
         tabPanes.forEach((pane) => pane.classList.remove("active"));
         // Tambahkan kelas 'active' ke elemen tab-pane yang sesuai dengan target
