@@ -92,7 +92,7 @@
             </a>
             <!-- Search form -->
             <form class="d-none d-md-flex input-group w-auto my-auto">
-                <input type="text" id="searchInput" onkeyup="searchByName()" placeholder="Search by name...">
+                <input class="form-control" type="text" id="searchInput" onkeyup="searchByName()" placeholder="Search by name...">
                 <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
             </form>
         </div>
