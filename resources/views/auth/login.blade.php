@@ -36,7 +36,7 @@
                     </div>
                     @endif
                     <div class="isi-login">
-                        @error('username')
+                        @error('email')
                         <div class="text-danger">
                             {{$message}}
                         </div>

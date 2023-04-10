@@ -30,15 +30,14 @@ class ProfileController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'password' => 'required|min:8|confirmed'
+            
         ]);
 
         $user = Auth::user();
         $user->update([
             'name' => $request->name,
-            'password' => Hash::make($request->password)
         ]);
 
-        return Redirect::back();
+        return Redirect::back()->with('success','Update Profile Success!');
     }
 }
