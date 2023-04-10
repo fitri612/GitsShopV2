@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <table class="table">
-        <thead>
+    <table class="table table-hover">
+        <thead style="background-color: #96d059; color: white">
             <tr>
                 <th scope="col">No</th>
                 <th scope="col">Code</th>
                 <th scope="col">Cash</th>
                 <th scope="col">Change</th>
-                <th scope="col">Handle</th>
+                <th scope="col" colspan="2">Handle</th>
             </tr>
         </thead>
         <tbody>
@@ -19,10 +19,12 @@
                     <th>Rp{{ number_format($item->cash) }}</th>
                     <th>Rp{{ number_format($item->change) }}</th>
                     <td>
-                        <a href="{{ route('transaction.print', $item->id) }}" class="btn btn-primary">Cetak</a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#addCategoryModal{{ $item->id }}">Detail</button>
+                        {{-- <button class="btn btn-primary"><a href="{{ route('transaction.print', $item->id) }}" class="btn btn-primary"><i class="fa-solid fa-print fa-fw me-1"></i>Cetak</a></button> --}}
+                        <a href="{{ route('transaction.print', $item->id) }}" class="btn btn-primary"><i class="fa-solid fa-print fa-fw me-1"></i>Cetak</a>
+                        <button class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#addCategoryModal{{ $item->id }}"><i class="fa-solid fa-circle-info fa-fw me-1"></i>Detail</button>
                     </td>
+                    {{-- <td><a href="{{ route('transaction.print', $item->id) }}" class="btn btn-primary"><i class="fa-solid fa-print fa-fw me-1"></i>Cetak</a></td> --}}
                 </tr>
                 <!-- Detail History Modal -->
                 <div class="modal fade" id="addCategoryModal{{ $item->id }}" tabindex="-1"
