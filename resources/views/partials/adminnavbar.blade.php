@@ -50,7 +50,7 @@
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
-                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Admin dashboard</span>
+                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Admin Dashboard</span>
                 </a>
                 <a href="{{ route('category.index') }}"
                     class="list-group-item list-group-item-action py-2 ripple">
