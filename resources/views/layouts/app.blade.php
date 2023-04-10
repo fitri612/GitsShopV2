@@ -169,4 +169,5 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="{{ asset('js/overlay.js') }}"></script>
 <script src="{{ asset('js/control.js') }}"></script>
+<script src="https://kit.fontawesome.com/82ebf8392e.js" crossorigin="anonymous"></script>
 </html>
