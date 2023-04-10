@@ -22,7 +22,7 @@
     height: 100%;
     width: 200px;
     position: fixed;
-    top: 100px;
+    top: 85px;
     left: 0;
     padding-top: 20px;
     /* color: #fff; */
@@ -35,14 +35,15 @@
 .sidebar a {
     display: block;
     font-size: large;
-    color: var(--headline);
     margin: 10px 0;
     padding: 10px 20px;
     text-decoration: none;
+    color: #218838;
 }
 
 .sidebar a:hover {
     background-color: #dfdfe2;
+    color: #74C163;
 }
 
 nav {

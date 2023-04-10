@@ -123,3 +123,10 @@ function searchByName() {
         }
     }
 }
+
+var menuItems = document.querySelectorAll('#navMenus li');
+for (var i = 0; i < menuItems.length; i++) {
+  if (menuItems[i].querySelector('a').href === window.location.href) {
+    menuItems[i].classList.add('active');
+  }
+}
