@@ -15,36 +15,6 @@ class productSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
-            [
-                'id' => 1,
-                'name' => 'komputer',
-            ],
-            [
-                'id' => 2,
-                'name' => 'laptop',
-            ]
-        ]);
-
-        DB::table('products')->insert([
-            [
-                'id' => 1,
-                'name' => 'Pc Gaming',
-                'price' => 5000000,
-                'description' => 'sebuah komputer dengan spesifikasi tinggi',
-                'category_id' => 1,
-                'image' => '../img/pc.png',
-                'stock' => 10
-            ],
-            [
-                'id' => 2,
-                'name' => 'laptop',
-                'price' => 5000000,
-                'description' => 'sebuah laptop dengan spesifikasi tinggi',
-                'category_id' => 2,
-                'image' => '../img/laptop.png',
-                'stock' => 10
-            ]
-        ]);
+        
     }
 }
