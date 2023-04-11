@@ -1,5 +1,5 @@
-{{-- @extends('layouts.app') --}}
-@extends('layouts.admin')
+@extends('layouts.app')
+{{-- @extends('layouts.admin') --}}
 {{-- ubah ke navbar admin --}}
 @section('content')
     <div class="row">

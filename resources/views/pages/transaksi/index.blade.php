@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('web-title', 'Transaction |')
 @section('content')
     <table class="table table-hover">
         <thead style="background-color: #96d059; color: white">
@@ -19,24 +19,24 @@
                     <th>Rp{{ number_format($item->cash) }}</th>
                     <th>Rp{{ number_format($item->change) }}</th>
                     <td>
-                        {{-- <button class="btn btn-primary"><a href="{{ route('transaction.print', $item->id) }}" class="btn btn-primary"><i class="fa-solid fa-print fa-fw me-1"></i>Cetak</a></button> --}}
                         <a href="{{ route('transaction.print', $item->id) }}" class="btn btn-primary"><i class="fa-solid fa-print fa-fw me-1"></i>Cetak</a>
                         <button class="btn btn-success" data-bs-toggle="modal"
                             data-bs-target="#addCategoryModal{{ $item->id }}"><i class="fa-solid fa-circle-info fa-fw me-1"></i>Detail</button>
                     </td>
-                    {{-- <td><a href="{{ route('transaction.print', $item->id) }}" class="btn btn-primary"><i class="fa-solid fa-print fa-fw me-1"></i>Cetak</a></td> --}}
                 </tr>
                 <!-- Detail History Modal -->
-                <div class="modal fade" id="addCategoryModal{{ $item->id }}" tabindex="-1"
+                <div class="modal" id="addCategoryModal{{ $item->id }}" tabindex="-1"
                     aria-labelledby="addCategoryModalLabel{{ $item->id }}" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="addCategoryModalLabel{{ $item->id }}">Detail History</h5>
+                                <h5 class="modal-title" id="addCategoryModalLabel{{ $item->id }}">Detail</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+                                <h5 class="fw-semibold text-center">laporan transaksi barang</h5>
+                                <p class="text-center">tanggal : {{ $item->created_at }}</p>
                                 <ul>
                                     <li>Total: Rp{{ $item->cash }}</li>
                                     <li>Kembalian: Rp{{ $item->change }}</li>

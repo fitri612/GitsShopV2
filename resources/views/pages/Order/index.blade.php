@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('web-title', 'Order |')
 
 @section('content')
     <div class="container">

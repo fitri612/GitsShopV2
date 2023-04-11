@@ -43,7 +43,7 @@ Route::middleware(['admin'])->group(function () {
 
 
     // V2 Routes product
-    Route::post('/order/{order}/confirm', [OrderController::class, 'confirm_payment'])->name('confirm_payment');
+    // Route::post('/order/{order}/confirm', [OrderController::class, 'confirm_payment'])->name('confirm_payment');
     Route::get('/productV2', [ProductControllerv2::class, 'index'])->name('index.productV2');
     Route::get('/productV2/{product}', [ProductControllerv2::class, 'show_product'])->name('show.productV2');
     Route::get('/productV2/create', [ProductControllerv2::class, 'create'])->name('create.productV2');

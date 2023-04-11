@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('web-title', 'Cashier |')
 
 @section('content')
     <section class="section-content padding-y-sm bg-default">
