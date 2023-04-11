@@ -20,8 +20,8 @@
             </div>
 
 
-            <div class="d-flex justify-content-between mt-3 px-3">
-                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">
+            <div class="d-flex justify-content-between mt-3 px-3 tombol-tambah">
+                <button type="button" class="btn mb-3 "  style="color:white;"data-bs-toggle="modal" data-bs-target="#addProductModal">
                     <i class="fa-solid fa-plus"></i> Add Product</button>
             </div>
             {{-- card datanya dalam bentuk table--}}
@@ -54,7 +54,7 @@
                         <td>{{$item->name}}</td>
                         <td>{{$item->category->name}}</td>
                         <td>{{$item->description}}</td>
-                        <td>{{$item->price}}</td>
+                        <td>Rp. {{number_format($item->price)}},00</td>
                         <td>
                             <form action="{{ route('show.productV2', $item) }}" method="get">
                                 <button type="submit" class="btn btn-secondary mt-2 ">
@@ -82,9 +82,9 @@
                     </tbody>
                     @endforeach
                 </table>
-                {{-- <div class="d-flex justify-content-end me-3">
-                    {!! $product->links('pagination::simple-bootstrap-5') !!}
-                </div> --}}
+                <div class="d-flex ms-3" >
+                    {!! $products->links('pagination::simple-bootstrap-5') !!}
+                </div>
             </div>
         
             {{-- product dalam bentuk card, tapi di halaman admin --}}
