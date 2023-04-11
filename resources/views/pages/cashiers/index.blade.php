@@ -6,7 +6,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 card padding-y-sm card ">
-                    {{-- filter kategori --}}
                     <ul id="category-nav" class="nav bg radius nav-pills nav-fill mb-3 bg" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active show" data-toggle="pill" data-category-id="all" href="#">
@@ -23,7 +22,7 @@
                     <span id="items">
                         <div class="row">
                             @foreach ($products as $product)
-                                <div class="col-md-3" data-category-id="{{ $product->category_id }}">
+                                <div class="col-md-4" data-category-id="{{ $product->category_id }}">
                                     <figure class="card card-product col">
                                         <span class="badge-new"> NEW </span>
                                         <div class="img-wrap">
@@ -59,7 +58,8 @@
                                                             <i class="fa fa-cart-plus"></i> Add
                                                         </button>
                                                         <div class="price-wrap h5">
-                                                            <span class="price-new">Rp {{ $product->price }}</span>
+                                                            <span
+                                                                class="price-new">Rp{{ number_format($product->price) }}</span>
                                                         </div>
                                                         @if (Auth::check() && Auth::user()->is_admin)
                                                             <form action="{{ route('destroy.productV2', $product) }}"
@@ -72,15 +72,14 @@
                                                             </form>
                                                         @endif
                                                     </div>
-                                                </form><!-- price-wrap.// -->
-                                            </div><!-- action-wrap -->
+                                                </form>
+                                            </div>
                                         </figcaption>
 
-                                    </figure> <!-- card // -->
+                                    </figure>
                                 </div>
-                            @endforeach <!-- col // -->
-                            <!-- col // -->
-                        </div> <!-- row.// -->
+                            @endforeach
+                        </div>
                     </span>
                 </div>
                 <div class="col-md-4">
@@ -127,7 +126,7 @@
                                             </td>
                                             <td>
                                                 <div class="price-wrap">
-                                                    <var class="price">Rp{{ $cart->product->price }}</var>
+                                                    <var class="price">Rp{{ number_format($cart->product->price) }}</var>
                                                 </div> <!-- price-wrap .// -->
                                             </td>
                                             <td class="text-right">
@@ -153,11 +152,11 @@
                                 </tbody>
                             </table>
                         </span>
-                    </div> <!-- card.// -->
+                    </div>
                     <div class="box">
                         <dl class="dlist-align">
                             <dt>Total: </dt>
-                            <dd class="text-right h4 b"> {{ $total_price }} </dd>
+                            <dd class="text-right h4 b"> Rp{{ number_format($total_price) }} </dd>
                         </dl>
                         <form action="{{ route('transaction.store') }}" method="post">
                             @csrf
@@ -167,11 +166,7 @@
                                         name="cash" value="" placeholder="Cash" required></dd>
                             </dl>
                             <div class="align-items-center">
-                                {{-- <div class="col-md-6">
-                                    <a href="#" class="btn  btn-default btn-error btn-lg btn-block"><i
-                                            class="fa fa-times-circle "></i> Cancel </a>
-                                </div> --}}
-                                <div class="col-md-12">
+                                <div class="col-md-14 mt-5">
                                     <button class="btn  btn-success btn-lg btn-block"
                                         onclick="return confirm('Are you sure you want to checkout?')"><i
                                             class="fa fa-shopping-bag"></i>
@@ -179,8 +174,6 @@
                                 </div>
                             </div>
                         </form>
-                    </div> <!-- box.// -->
-                        </div>
                     </div>
                 </div>
             </div>
