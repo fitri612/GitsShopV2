@@ -48,9 +48,9 @@
                                         <input type="role" class="form-control"
                                             value="{{ $user->is_admin ? 'Admin' : 'Member' }}" disabled>
                                     </div>
-                                    <div class="d-flex justify-content-end">
+                                    <div class="d-flex justify-content-end tombol-tambah">
 
-                                        <button type="submit" class="btn btn-primary mt-3">Change profile details</button>
+                                        <button type="submit" class="btn  mt-3" style="color:white;">Change profile details</button>
                                     </div>
                                 </div>
                             </div>

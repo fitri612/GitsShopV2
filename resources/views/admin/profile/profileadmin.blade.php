@@ -25,10 +25,10 @@
                                     <div class="d-flex">
                                         <img src="{{asset('images/1680958590_baju koko.png')}}" alt="" class="img-thumbnail rounded" style="width:100%;height:250px;margin:0;object-fit: cover">
                                     </div>
-                                    <div class="label mt-3">          
+                                    {{-- <div class="label mt-3">          
                                         <input type="file" class="form-control @error('gambar') is-invalid @enderror" accept="image/*" name="gambar"
                                         id="formFile" style="background-color: rgb(240, 240, 244)" value="{{asset('storage/images/1680958590_baju koko.png')}}">
-                                    </div>
+                                    </div> --}}
                         
                                 </div>
                                 <div class="col-md-8">
@@ -47,9 +47,9 @@
                                         <input type="role" class="form-control"
                                             value="{{ $user->is_admin ? 'Admin' : 'Member' }}" disabled>
                                     </div>
-                                    <div class="d-flex justify-content-end">
+                                    <div class="d-flex justify-content-end tombol-tambah">
 
-                                        <button type="submit" class="btn btn-primary mt-3">Change profile details</button>
+                                        <button type="submit" class="btn  mt-3 " style="color:white;">Change profile details</button>
                                     </div>
                                 </div>
                             </div>

@@ -19,8 +19,8 @@
             <div class="card-header" style="background-color: white;">
                 <h4 class="card-title">Table Categories</h4>
             </div>
-            <div class="d-flex justify-content-between mt-3 px-3">
-                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
+            <div class="d-flex justify-content-between mt-3 px-3 tombol-tambah">
+                <button type="button" class="btn  mb-3" data-bs-toggle="modal"
                     data-bs-target="#addCategoryModal">
                     <i class="fa-solid fa-plus"></i> Add Category</button>
             </div>

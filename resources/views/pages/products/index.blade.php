@@ -20,8 +20,8 @@
             </div>
 
 
-            <div class="d-flex justify-content-between mt-3 px-3">
-                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">
+            <div class="d-flex justify-content-between mt-3 px-3 tombol-tambah">
+                <button type="button" class="btn mb-3 "  style="color:white;"data-bs-toggle="modal" data-bs-target="#addProductModal">
                     <i class="fa-solid fa-plus"></i> Add Product</button>
             </div>
             {{-- card datanya dalam bentuk table--}}
