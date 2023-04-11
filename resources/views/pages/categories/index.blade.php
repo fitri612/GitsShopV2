@@ -16,8 +16,8 @@
             </div>
         @endif
         <div class="card w-100">
-            <div class="card-header">
-                <h4 class="card-title">Categories Fix</h4>
+            <div class="card-header" style="background-color: white;">
+                <h4 class="card-title">Table Categories</h4>
             </div>
             <div class="d-flex justify-content-between mt-3 px-3">
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
