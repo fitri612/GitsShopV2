@@ -1,7 +1,11 @@
-    @extends('layouts.app')
+@extends('layouts.app')
 
-    @section('content')
+@section('content')
+    @include('pages.carts.detail.index')
+@endsection
 
-        </div>
-        @include('pages.carts.detail.index')
-    @endsection
+@section('content1')
+<div class="content2" style="height: 50vh">
+    <h1 class="text-center">stay tune for next content</h1>
+</div>
+@endsection

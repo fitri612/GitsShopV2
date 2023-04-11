@@ -19,20 +19,25 @@ class ProfileController extends Controller
         $user = Auth::user();
         return view('pages.profile.index', compact('user'));
     }
+    
+    public function show_profile_admin()
+    {
+        $user = Auth::user();
+        return view('admin.profile.profileadmin', compact('user'));
+    }
 
     public function edit_profile(Request $request)
     {
         $request->validate([
             'name' => 'required',
-            'password' => 'required|min:8|confirmed'
+            
         ]);
 
         $user = Auth::user();
         $user->update([
             'name' => $request->name,
-            'password' => Hash::make($request->password)
         ]);
 
-        return Redirect::back();
+        return Redirect::back()->with('success','Update Profile Success!');
     }
 }

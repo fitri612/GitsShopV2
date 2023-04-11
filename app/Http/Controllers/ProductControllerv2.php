@@ -19,6 +19,18 @@ class ProductControllerv2 extends Controller
     {
         $categories = Categories::all();
         $products = Product::with('category')->get();
+
+        
+        
+        // if ($category_id) {
+        //     $products = $products->where('category_id', $category_id);
+        // }
+
+        // $products = $products->get();
+
+
+
+
         // dd($products);
         return view('pages.products.index', compact('products', 'categories'));
     }
@@ -166,5 +178,12 @@ class ProductControllerv2 extends Controller
     {
         $products = Product::all();
         return view('dashboard_casier', compact('products'));
+    }
+    
+    
+    public function index_admin()
+    {
+        $products = Product::all();
+        return view('admin.product.indexadmin', compact('products'));
     }
 }

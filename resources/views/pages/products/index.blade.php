@@ -1,5 +1,5 @@
-@extends('layouts.app')
 
+@extends('layouts.admin')
 @section('content')
     <div class="row">
         {{-- Flask Message --}}
@@ -15,17 +15,80 @@
             </div>
         @endif
         <div class="card w-100">
-            <div class="card-header">
-                <h4 class="card-title">Product Fix</h4>
+            <div class="card-header" style="background-color: white">
+                <h3 class="card-title" >Table Product</h3>
             </div>
 
 
             <div class="d-flex justify-content-between mt-3 px-3">
-                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">Add
-                    Product</button>
+                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                    <i class="fa-solid fa-plus"></i> Add Product</button>
             </div>
-            {{-- card datanya --}}
-            <div class="container">
+            {{-- card datanya dalam bentuk table--}}
+            <div class="card ms-3 me-3 mb-5"  style="">    
+                <table class="table   text-center">
+                    <thead class="table" style="background-color: rgb(116, 193, 99); color:white">
+                        <th>No</th>
+                        <th>Gambar</th>
+                        <th>Nama product</th>
+                        <th>Kategori</th>
+                        <th>Deskripsi</th>
+                        <th>Harga</th>
+                        <th>Details</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </thead>
+                    
+                    @foreach ($products as $item)
+                    <tbody >
+                        <td >{{$loop->iteration}}</td>
+                        <td>
+                            @if ($item->image)
+                            <img src="{{ url('images/' . $item->image) }}" alt="" class="img-thumbnail rounded" style="max-width: 70px;height:70px;margin:0;object-fit: cover;">
+                            
+                            @else
+                            <p>tidak ada gambar</p>
+                                            
+                            @endif
+                        </td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->category->name}}</td>
+                        <td>{{$item->description}}</td>
+                        <td>{{$item->price}}</td>
+                        <td>
+                            <form action="{{ route('show.productV2', $item) }}" method="get">
+                                <button type="submit" class="btn btn-secondary mt-2 ">
+                                    <i class="fa-solid fa-file"></i>
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            @if (Auth::check() && Auth::user()->is_admin)
+                            <button type="button" class="btn btn-primary mt-2 " data-bs-toggle="modal"
+                                data-bs-target="#editProductModal{{ $item->id }}">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <form action="{{ route('delete_product', $item) }}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger mt-2 ">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        @endif
+                        </td>
+                    </tbody>
+                    @endforeach
+                </table>
+                {{-- <div class="d-flex justify-content-end me-3">
+                    {!! $product->links('pagination::simple-bootstrap-5') !!}
+                </div> --}}
+            </div>
+        
+            {{-- product dalam bentuk card, tapi di halaman admin --}}
+            {{-- <div class="container">
                 <h2 class="text-center">{{ __('Products') }}</h2>
                 <div class="row row-cols-1 row-cols-md-3 justify-content-center">
                     @foreach ($products as $product)
@@ -55,7 +118,7 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 

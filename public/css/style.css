@@ -17,6 +17,35 @@
     --card-text: #2b2c34;
 }
 
+.sidebar {
+    background: #96d059;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 85px;
+    left: 0;
+    padding-top: 20px;
+    /* color: #fff; */
+    box-sizing: border-box;
+}
+
+.sidebar .head-text {
+    padding-bottom: 20px;
+}
+.sidebar a {
+    display: block;
+    font-size: large;
+    margin: 10px 0;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #218838;
+}
+
+.sidebar a:hover {
+    background-color: #dfdfe2;
+    color: #74C163;
+}
+
 nav {
     position: fixed;
     top: 0;
@@ -105,8 +134,12 @@ nav .logo a {
 
 .main-container {
     margin-top: 130px;
-    margin-left: 40px;
+    margin-left: 240px;
     margin-right: 40px;
 
     /* background: #4070f4; */
 }
+
+/* .content2 {
+    height: 50vh;
+} */

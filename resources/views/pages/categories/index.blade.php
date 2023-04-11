@@ -1,5 +1,6 @@
-@extends('layouts.app')
-
+{{-- @extends('layouts.app') --}}
+@extends('layouts.admin')
+{{-- ubah ke navbar admin --}}
 @section('content')
     <div class="row">
         {{-- Flask Message --}}
@@ -20,8 +21,8 @@
             </div>
             <div class="d-flex justify-content-between mt-3 px-3">
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
-                    data-bs-target="#addCategoryModal">Add
-                    Category</button>
+                    data-bs-target="#addCategoryModal">
+                    <i class="fa-solid fa-plus"></i> Add Category</button>
             </div>
 
             {{-- Message form validation error --}}
@@ -35,14 +36,17 @@
                 </div>
             @endif
 
-            <div class="card-body">
+            <div class="card-body ">
                 <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead class=" text-primary">
+                    <table class="table ">
+                        <thead class=" text-white " style="background-color: rgb(116, 193, 99);">
                             <th scope="col">No</th>
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Action</th>
+                            <th >Created At</th>
+                            <th >Updated At</th>
+                            <th scope="col">Update</th>
+                            <th scope="col">Delete</th>
                         </thead>
                         <tbody>
                             @foreach ($categories as $category)
@@ -50,14 +54,23 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
+                                    <td>{{ $category->created_at }}</td>
+                                    <td>{{ $category->updated_at }}</td>
                                     <td>
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#editCategoryModal{{ $category->id }}">Edit</button>
-                                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
+                                            data-bs-target="#editCategoryModal{{ $category->id }}">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fa-solid fa-trash"></i>
+
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
