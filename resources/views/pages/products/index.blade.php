@@ -26,11 +26,11 @@
                     <i class="fa-solid fa-plus"></i> Add Product</button>
             </div>
             {{-- card datanya dalam bentuk table--}}
-            <div class="card ms-3 me-3 mb-5"  style="">    
-                <table class="table text-center">
-                    <thead class="table text-white" style="background-color: rgb(116, 193, 99); ">
-                        <th scope="col">No</th>
-                        <th scope="col">Gambar</th>
+            <div class="card-body ms-3 me-3 mb-5"  style="">    
+                <table class="table   text-center">
+                    <thead class="table" style="background-color: rgb(116, 193, 99); color:white">
+                        <th>No</th>
+                        <th>Gambar</th>
                         <th>Nama product</th>
                         <th>Kategori</th>
                         <th>Deskripsi</th>

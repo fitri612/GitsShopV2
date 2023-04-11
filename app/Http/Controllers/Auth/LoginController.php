@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/product';
+    protected $redirectTo = '/transaction/index';
 
     /**
      * Create a new controller instance.
@@ -38,12 +38,12 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // protected function redirectTo()
-    // {
-    //     if (auth()->user()->is_admin) {
-    //         return route('index_admin');
-    //     }
+    protected function redirectTo()
+    {
+        if (auth()->user()->is_admin) {
+            return route('category.index');
+        }
         
-    //     return $this->redirectTo;
-    // }
+        return $this->redirectTo;
+    }
 }
