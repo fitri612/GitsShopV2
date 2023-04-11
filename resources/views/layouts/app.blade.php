@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- judul website --}}
-    <title>@yield('web-title') Lemon Shop</title>
+    <title>@yield('web-title') Lemon Shopp</title>
     <link rel="stylesheet" href="css\style.css">
     <link rel="shortcut icon" type="png" href="img/web icon.png" />
 
