@@ -82,9 +82,9 @@
                     </tbody>
                     @endforeach
                 </table>
-                {{-- <div class="d-flex justify-content-end me-3">
-                    {!! $product->links('pagination::simple-bootstrap-5') !!}
-                </div> --}}
+                <div class="d-flex ms-3" >
+                    {!! $products->links('pagination::simple-bootstrap-5') !!}
+                </div>
             </div>
         
             {{-- product dalam bentuk card, tapi di halaman admin --}}

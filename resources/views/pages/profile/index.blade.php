@@ -3,14 +3,14 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h3 class="text-center">Update Profile</h3>
+                <h3 class="text-center mt-5">Update Profile</h3>
                 @if (Session::has('success'))
                 <script>
                     alert('Update Profile Success!')
                 </script>
                 @endif
             
-                <div class="card mt-5">
+                <div class="card mt-3">
 
                     <div class="card-body">
                         @if ($errors->any())

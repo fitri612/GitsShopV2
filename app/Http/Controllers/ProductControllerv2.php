@@ -18,7 +18,7 @@ class ProductControllerv2 extends Controller
     public function index()
     {
         $categories = Categories::all();
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->latest()->paginate(5);
 
         
         
@@ -82,7 +82,7 @@ class ProductControllerv2 extends Controller
             'category_id' => $request->category_id
         ]);
 
-        return Redirect::route('index.productV2');
+        return Redirect::route('index.productV2')->with('success','Insert Data Product Success!');
     }
 
     /**
