@@ -23,14 +23,20 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 Route::get('/', function () {
-    return Redirect::route('index_product');
+    if (Auth::check()) {
+        return redirect()->route('index_product');
+    } else {
+        return view('auth.login');
+    }
 });
 
 Auth::routes();
 
+
 Route::get('/product', [ProductControllerv2::class, 'index_product'])->name('index_product');
 
 Route::middleware(['admin'])->group(function () {
+    Route::get('/admin', [ProductControllerv2::class, 'index_admin'])->name('index_admin');
     Route::get('/category', [CategoriesController::class, 'index'])->name('category.index');
     Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
     Route::delete('/categories/{id}', [CategoriesController::class, 'destroy'])->name('categories.destroy');
@@ -64,7 +70,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/cart/{product}', [CartController::class, 'add_to_cart'])->name('add_to_cart');
     Route::get('/cart', [CartController::class, 'show_cart'])->name('show_cart');
-    Route::patch('/cart/{cart}', [CartController::class, 'update_cart'])->name('update_cart');
+    Route::put('/cart/{cart}', [CartController::class, 'update_cart'])->name('update_cart');
     Route::delete('/cart/{cart}', [CartController::class, 'delete_cart'])->name('delete_cart');
     Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
     Route::get('/order', [OrderController::class, 'index_order'])->name('index_order');
@@ -72,12 +78,16 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/order/{order}/pay', [OrderController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');
     Route::get('/profile', [ProfileController::class, 'show_profile'])->name('show_profile');
     Route::post('/profile', [ProfileController::class, 'edit_profile'])->name('edit_profile');
-
+    
+    // show profile admin
+    Route::get('/setting', [ProfileController::class, 'show_profile_admin'])->name('show_profile_admin');
     //  Route Cashier
     // prefix === /
     Route::controller(TransactionController::class)->prefix('transaction')->name('transaction.')->group(function () {
         Route::get('index', 'cashier')->name('cashier');
         Route::post('store', 'store')->name('store');
+        Route::get('history', 'index_history')->name('history');
+        Route::get('print/{transaction}', 'print_invoice')->name('print');
     });
 
     // contoh yang lama

@@ -1,86 +1,66 @@
-<nav>
-    <div class="nav-content">
-        <div class="logo">
-            <img src="../img/keyboard.png" alt="" style="width:60px;height:60px;">
-            <a href="/" style="color:#00214d">Lemon Shop</a>
-        </div>
-        <form class="search-box">
-            <input type="text" placeholder=" Cari produk....">
-            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-        <ul class="nav-links">
-            <li><button class="btn btn-success">cart</button></li>
-
-            @guest
-                @if (Route::has('login'))
-                    <li><a href="{{ route('login') }}"><button class="btn btn-primary">masuk</button></a></li>
-                @endif
-
-                @if (Route::has('register'))
-                    <li><a href="{{ route('register') }}"><button class="btn btn-primary">daftar</button></a></li>
-                @endif
-            @else
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
+<header>
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+        <div class="position-sticky">
+            <ul class="list-group list-group-flush mx-3 mt-4" id="navmenu" style="list-style-type: none;">
+                <li>
+                    <a href="{{ route('transaction.cashier') }}"
+                        class="{{ request()->routeIs('transaction.cashier') ? 'active' : '' }}">
+                        <i class="fas fa-chart-area fa-fw me-3"></i><span>Cashier</span>
                     </a>
-
-                    <div class="dropdown-menu dropdown-menu-end shadow-sm p-7 " aria-labelledby="navbarDropdown">
-                        @if (Auth::user()->is_admin)
-                            <a class="dropdown-item" href="{{ route('category.index') }}">
-                                <i class="fa-solid fa-list"></i>
-                                Categories
-                            </a>
-                        @endif
-                        @if (Auth::user()->is_admin)
-                            <a class="dropdown-item" href="{{ route('index.productV2') }}">
-                                <i class="fa-solid fa-cart-plus"></i>
-                                Create product V2
-                            </a>
-                            <a class="dropdown-item" href="{{ route('create_product') }}">
-                                <i class="fa-solid fa-cart-plus"></i>
-                                Create product
-                            </a>
-                        @else
-                            <a class="dropdown-item" href="{{ route('show_cart') }}">
-                                <i class="fa fa-cart-shopping " aria-hidden="true"></i>
-                                Cart
-                            </a>
-                            <a class="dropdown-item" href="{{ route('transaction.cashier') }}">
-                                <i class="fa fa-cart-shopping " aria-hidden="true"></i>
-                                Casier
-                            </a>
-                        @endif
-
-                        <a class="dropdown-item" href="{{ route('index_order') }}">
-                            <i class="fa-sharp fa-solid fa-clipboard-list"></i>
-                            My Order
-                        </a>
-
-                        <a class="dropdown-item" href="{{ route('show_profile') }}">
-                            <i class="fa-solid fa-user"></i>
-                            Profile
-                        </a>
-
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-
-                             document.getElementById('logout-form').submit();">
-                            <i class="fa-sharp fa-solid fa-right-from-bracket"></i>
-
-                            {{ __('Logout') }}
-                        </a>
-
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-
-                            @csrf
-                        </form>
-                    </div>
-
                 </li>
-            @endguest
-        </ul>
-    </div>
-</nav>
+                <li >
+                    <a href="{{ route('transaction.history') }}"
+                        class="{{ request()->routeIs('transaction.history') ? 'active' : '' }}">
+                        <i class="fas fa-lock fa-fw me-3"></i><span>Transaction</span>
+                    </a>
+                </li>
+                <li >
+                    <a href="{{ route('show_profile') }}"
+                        class="{{ request()->routeIs('show_profile') ? 'active' : '' }}">
+                        <i class="fa-solid fa-user fa-fw me-3"></i><span>Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
+                        href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                        <i class="fa-solid fa-right-from-bracket fa-fw me-3"></i><span>{{ __('Logout') }}</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+                aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">
+                <img src="../img/keyboard.png" style="width:60px;height:60px;  margin: 0px;" loading="lazy" />
+                <strong class="ms-1">Lemon Shop</strong>
+            </a>
+            <!-- Search form -->
+            {{-- <form class="d-none d-md-flex input-group w-auto my-auto">
+                <input type="text" id="searchInput" onkeyup="searchByName()" placeholder="Search by name...">
+                <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+            </form> --}}
+            <form class="d-none d-md-flex input-group w-auto my-auto">
+                <input class="form-control" type="text" id="searchInput" onkeyup="searchByName()"
+                    placeholder="Search by name...">
+                <span class="input-group-text border-0 btn btn-primary"><i class="fas fa-search"></i></span>
+            </form>
+        </div>
+
+        <!-- Container wrapper -->
+
+    </nav>
+</header>

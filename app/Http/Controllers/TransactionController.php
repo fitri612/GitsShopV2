@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Categories;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
@@ -18,9 +19,10 @@ class TransactionController extends Controller
      */
     public function cashier()
     {
+        $categories = Categories::all();
         $products = Product::all();
         $carts = Cart::all();
-        return view('pages.cashiers.index', compact('products', 'carts'));
+        return view('pages.cashiers.index', compact('products', 'carts', 'categories'));
     }
 
     /**
@@ -41,7 +43,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         try {
             DB::beginTransaction();
             $carts = Cart::with('product')->get();
@@ -97,18 +99,14 @@ class TransactionController extends Controller
             }
 
             DB::commit();
-
-            // dd(Transaction::with(['user', 'transaction_detail'])->get());
-            
-            
             return view('pages.prints.invoice', [
                 'data' => Transaction::with('user', 'transaction_details')->findOrFail($transaction->id)
             ]);
             // dd(Transaction::where('id', $transaction->id)->with('transaction_details')->get());
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e);
-            // return redirect()->back();
+            // dd($e);
+            return redirect()->back();
         }
     }
 
@@ -155,5 +153,23 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         //
+    }
+
+    public function index_history(Transaction $transaction)
+    {
+        $transaction = Transaction::with('user','transaction_details')->get();
+        return view('pages.transaksi.index', compact('transaction'));
+    }
+
+    // public function history_transaction()
+    // {
+    //     $transactions = Transaction::with('user', 'transaction_details')->get();
+    //     return view('pages.transactions.index', compact('transactions'));
+    // }
+
+    public function print_invoice($id)
+    {
+        $data = Transaction::with('user', 'transaction_details')->findOrFail($id);
+        return view('pages.prints.invoice', compact('data'));
     }
 }

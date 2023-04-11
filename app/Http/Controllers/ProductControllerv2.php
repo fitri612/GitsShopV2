@@ -18,7 +18,19 @@ class ProductControllerv2 extends Controller
     public function index()
     {
         $categories = Categories::all();
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->latest()->paginate(5);
+
+        
+        
+        // if ($category_id) {
+        //     $products = $products->where('category_id', $category_id);
+        // }
+
+        // $products = $products->get();
+
+
+
+
         // dd($products);
         return view('pages.products.index', compact('products', 'categories'));
     }
@@ -48,7 +60,7 @@ class ProductControllerv2 extends Controller
             'price' => 'required',
             'stock' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required'
         ]);
 
@@ -70,7 +82,7 @@ class ProductControllerv2 extends Controller
             'category_id' => $request->category_id
         ]);
 
-        return Redirect::route('index.productV2');
+        return Redirect::route('index.productV2')->with('success','Insert Data Product Success!');
     }
 
     /**
@@ -166,5 +178,12 @@ class ProductControllerv2 extends Controller
     {
         $products = Product::all();
         return view('dashboard_casier', compact('products'));
+    }
+    
+    
+    public function index_admin()
+    {
+        $products = Product::all();
+        return view('admin.product.indexadmin', compact('products'));
     }
 }

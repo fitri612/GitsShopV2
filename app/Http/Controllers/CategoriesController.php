@@ -42,7 +42,7 @@ class CategoriesController extends Controller
             return redirect()->route('login');
         } else {
             $request->validate([
-                'name' => 'required',
+                'name' => 'required|unique:categories',
             ]);
             Categories::create([
                 'name' => $request->name,
@@ -83,7 +83,7 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories',
         ]);
         $category = Categories::findOrFail($id);
         $category->update([
