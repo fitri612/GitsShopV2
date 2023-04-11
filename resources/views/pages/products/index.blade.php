@@ -27,10 +27,10 @@
             </div>
             {{-- card datanya dalam bentuk table--}}
             <div class="card ms-3 me-3 mb-5"  style="">    
-                <table class="table   text-center">
-                    <thead class="table" style="background-color: rgb(116, 193, 99); color:white">
-                        <th>No</th>
-                        <th>Gambar</th>
+                <table class="table text-center">
+                    <thead class="table text-white" style="background-color: rgb(116, 193, 99); ">
+                        <th scope="col">No</th>
+                        <th scope="col">Gambar</th>
                         <th>Nama product</th>
                         <th>Kategori</th>
                         <th>Deskripsi</th>
@@ -83,9 +83,9 @@
                     </tbody>
                     @endforeach
                 </table>
-                <div class="d-flex ms-3" >
+                {{-- <div class="d-flex ms-3" >
                     {!! $products->links('pagination::simple-bootstrap-5') !!}
-                </div>
+                </div> --}}
             </div>
         
             {{-- product dalam bentuk card, tapi di halaman admin --}}

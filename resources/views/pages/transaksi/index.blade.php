@@ -14,10 +14,10 @@
         <tbody>
             @foreach ($transaction as $item)
                 <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
-                    <th>{{ $item->code_invoice }}</th>
-                    <th>Rp{{ number_format($item->cash) }}</th>
-                    <th>Rp{{ number_format($item->change) }}</th>
+                    <td scope="row">{{ $loop->iteration }}</td>
+                    <td>{{ $item->code_invoice }}</td>
+                    <td>Rp{{ number_format($item->cash) }}</td>
+                    <td>Rp{{ number_format($item->change) }}</td>
                     <td>
                         <a href="{{ route('transaction.print', $item->id) }}" class="btn btn-primary"><i class="fa-solid fa-print fa-fw me-1"></i>Cetak</a>
                         <button class="btn btn-success" data-bs-toggle="modal"
