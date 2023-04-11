@@ -2199,6 +2199,9 @@ ul.row, ul.row-sm {
 .active {
     background-color: #96d059 !important;
 }
+.active i, .active span {
+  color: white;
+}
 .divider-text {
   position: relative;
   text-align: center;
