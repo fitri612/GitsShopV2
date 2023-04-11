@@ -2044,7 +2044,12 @@ ul.row, ul.row-sm {
     display: block; }
 
 .price-new, .price {
-  margin-right: 5px; }
+  margin-right: 5px; 
+  font-size: 14px;
+  color: #7B7B7B;
+  font-size: bold;
+  font-family: 'Roboto', sans-serif;
+}
 
 .price-old {
   color: #999; }
