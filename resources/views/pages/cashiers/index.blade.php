@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@section('web-title', 'Cashier |')
 
 @section('content')
     <section class="section-content padding-y-sm bg-default">
@@ -8,13 +7,13 @@
                 <div class="col-md-8 card padding-y-sm card ">
                     <ul id="category-nav" class="nav bg radius nav-pills nav-fill mb-3 bg" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active show" data-toggle="pill" data-category-id="all" href="#">
+                            <a class="nav-link active show" data-toggle="pill" data-category-id="all" href="#all">
                                 <i class="fa fa-tags"></i> All</a>
                         </li>
                         @foreach ($categories as $category)
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="pill" data-category-id="{{ $category->id }}"
-                                    href="#">
+                                    href="#category-{{ $category->id }}">
                                     <i class="fa fa-tags"></i> {{ $category->name }}</a>
                             </li>
                         @endforeach

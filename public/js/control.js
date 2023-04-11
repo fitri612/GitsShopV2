@@ -27,6 +27,7 @@ function decrementValue(id) {
 }
 
 // Ambil semua elemen tab
+document.addEventListener("DOMContentLoaded", () => {
 const tabs = document.querySelectorAll(".nav-link");
 
 // Tambahkan event listener pada setiap tab
@@ -45,33 +46,9 @@ tabs.forEach((tab) => {
         target.classList.add("active");
     });
 });
-
-// navbar item
-// Ambil semua elemen tab
-const navtab = document.querySelectorAll(".list-group-item");
-
-let activeTab = null; // variabel untuk menyimpan tab yang sedang aktif
-
-// Tambahkan event listener pada setiap tab
-navtab.forEach((tab) => {
-    tab.addEventListener("click", (e) => {
-        // Hapus kelas 'active' dari tab yang sedang aktif
-        if (activeTab) {
-            activeTab.classList.remove("active");
-        }
-        // Tambahkan kelas 'active' ke tab yang diklik
-        tab.classList.add("active");
-        // Simpan tab yang sedang aktif
-        activeTab = tab;
-
-        // Ambil target elemen tab-pane dan hapus kelas 'active' dari semua elemen tab-pane
-        const target = document.querySelector(tab.getAttribute("href"));
-        const tabPanes = document.querySelectorAll(".tab-pane");
-        tabPanes.forEach((pane) => pane.classList.remove("active"));
-        // Tambahkan kelas 'active' ke elemen tab-pane yang sesuai dengan target
-        target.classList.add("active");
-    });
 });
+
+
 
 $(document).ready(function () {
     // inisialisasi category_id dengan nilai all
