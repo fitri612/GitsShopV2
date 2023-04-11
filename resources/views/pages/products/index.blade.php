@@ -54,7 +54,7 @@
                         <td>{{$item->name}}</td>
                         <td>{{$item->category->name}}</td>
                         <td>{{$item->description}}</td>
-                        <td>{{$item->price}}</td>
+                        <td>Rp. {{number_format($item->price)}},00</td>
                         <td>
                             <form action="{{ route('show.productV2', $item) }}" method="get">
                                 <button type="submit" class="btn btn-secondary mt-2 ">
