@@ -2,13 +2,36 @@
     <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
         <div class="position-sticky">
             <ul class="list-group list-group-flush mx-3 mt-4" id="navmenu" style="list-style-type: none;">
+                @if (Auth::user()->is_admin)
+                <li>
+                    <a href="{{ route('category.index') }}"
+                        class="{{ request()->routeIs('category.index') ? 'active' : '' }}">
+                        <i class="fa-solid fa-list-ol fa-fw me-3"></i><span>Category</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('index.productV2') }}"
+                        class="{{ request()->routeIs('index.productV2') ? 'active' : '' }}">
+                        <i class="fa-solid fa-boxes-stacked fa-fw me-3"></i><span>Product</span>
+                    </a>
+                </li>
+
+                <li >
+                    <a href="{{ route('show_profile') }}"
+                        class="{{ request()->routeIs('show_profile') ? 'active' : '' }}">
+                        <i class="fa-solid fa-user fa-fw me-3"></i><span>Profile</span>
+                    </a>
+                </li>
+
+                @else
                 <li>
                     <a href="{{ route('transaction.cashier') }}"
                         class="{{ request()->routeIs('transaction.cashier') ? 'active' : '' }}">
                         <i class="fas fa-chart-area fa-fw me-3"></i><span>Cashier</span>
                     </a>
                 </li>
-                <li >
+                <li>
                     <a href="{{ route('transaction.history') }}"
                         class="{{ request()->routeIs('transaction.history') ? 'active' : '' }}">
                         <i class="fas fa-lock fa-fw me-3"></i><span>Transaction</span>
@@ -20,6 +43,25 @@
                         <i class="fa-solid fa-user fa-fw me-3"></i><span>Profile</span>
                     </a>
                 </li>
+                @endif
+                {{-- <li>
+                    <a href="{{ route('transaction.cashier') }}"
+                        class="{{ request()->routeIs('transaction.cashier') ? 'active' : '' }}">
+                        <i class="fas fa-chart-area fa-fw me-3"></i><span>Cashier</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('transaction.history') }}"
+                        class="{{ request()->routeIs('transaction.history') ? 'active' : '' }}">
+                        <i class="fas fa-lock fa-fw me-3"></i><span>Transaction</span>
+                    </a>
+                </li>
+                <li >
+                    <a href="{{ route('show_profile') }}"
+                        class="{{ request()->routeIs('show_profile') ? 'active' : '' }}">
+                        <i class="fa-solid fa-user fa-fw me-3"></i><span>Profile</span>
+                    </a>
+                </li> --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
                         href="{{ route('logout') }}"
