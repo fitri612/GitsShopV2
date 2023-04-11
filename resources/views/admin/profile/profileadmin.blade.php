@@ -29,7 +29,7 @@
                                         <input type="file" class="form-control @error('gambar') is-invalid @enderror" accept="image/*" name="gambar"
                                         id="formFile" style="background-color: rgb(240, 240, 244)" value="{{asset('storage/images/1680958590_baju koko.png')}}">
                                     </div> --}}
-                        
+                        h
                                 </div>
                                 <div class="col-md-8">
 
