@@ -3,14 +3,14 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h3 class="text-center">Update Profile</h3>
+                <h3 class="text-center mt-5">Update Profile</h3>
                 @if (Session::has('success'))
                 <script>
                     alert('Update Profile Success!')
                 </script>
                 @endif
             
-                <div class="card mt-5">
+                <div class="card mt-3">
 
                     <div class="card-body">
                         @if ($errors->any())
@@ -48,9 +48,9 @@
                                         <input type="role" class="form-control"
                                             value="{{ $user->is_admin ? 'Admin' : 'Member' }}" disabled>
                                     </div>
-                                    <div class="d-flex justify-content-end">
+                                    <div class="d-flex justify-content-end tombol-tambah">
 
-                                        <button type="submit" class="btn btn-primary mt-3">Change profile details</button>
+                                        <button type="submit" class="btn  mt-3" style="color:white;">Change profile details</button>
                                     </div>
                                 </div>
                             </div>
