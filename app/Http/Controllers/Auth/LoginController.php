@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/product';
+    protected $redirectTo = '/transaction/index';
 
     /**
      * Create a new controller instance.
@@ -41,7 +41,7 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         if (auth()->user()->is_admin) {
-            return route('index_admin');
+            return route('category.index');
         }
         
         return $this->redirectTo;
