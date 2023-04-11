@@ -36,7 +36,7 @@ Auth::routes();
 Route::get('/product', [ProductControllerv2::class, 'index_product'])->name('index_product');
 
 Route::middleware(['admin'])->group(function () {
-    Route::get('/admin', [ProductControllerv2::class, 'index_admin'])->name('index_admin');
+    // Route::get('/admin', [ProductControllerv2::class, 'index_admin'])->name('index_admin');
     Route::get('/category', [CategoriesController::class, 'index'])->name('category.index');
     Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
     Route::delete('/categories/{id}', [CategoriesController::class, 'destroy'])->name('categories.destroy');

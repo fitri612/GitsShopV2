@@ -1,5 +1,6 @@
-
-@extends('layouts.admin')
+@extends('layouts.app')
+{{-- @extends('layouts.admin') --}}
+@section('web-title', 'Product |')
 @section('content')
     <div class="row">
         {{-- Flask Message --}}
