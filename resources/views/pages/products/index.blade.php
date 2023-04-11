@@ -25,7 +25,7 @@
                     <i class="fa-solid fa-plus"></i> Add Product</button>
             </div>
             {{-- card datanya dalam bentuk table--}}
-            <div class="card ms-3 me-3 mb-5"  style="">    
+            <div class="card-body ms-3 me-3 mb-5"  style="">    
                 <table class="table   text-center">
                     <thead class="table" style="background-color: rgb(116, 193, 99); color:white">
                         <th>No</th>
