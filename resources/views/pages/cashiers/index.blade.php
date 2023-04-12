@@ -21,7 +21,9 @@
                     <span id="items">
                         <div class="row">
                             @foreach ($products as $product)
-                                <div class="col-md-4" data-category-id="{{ $product->category_id }}">
+                                {{-- <div class="col-md-3" data-category-id="{{ $product->category_id }}"> --}}
+                                <div class="col-md-3 col-md-4" data-category-id="{{ $product->category_id }}">
+
                                     <figure class="card card-product col">
                                         <span class="badge-new"> NEW </span>
                                         <div class="img-wrap">
