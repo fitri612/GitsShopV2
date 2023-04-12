@@ -24,11 +24,13 @@
                             data-bs-target="#addCategoryModal{{ $item->id }}"><i class="fa-solid fa-circle-info fa-fw me-1"></i>Detail</button>
                     </td>
                 </tr>
+               
             @endforeach
         </tbody>
     </table>
-      <!-- Detail History Modal -->
-      <div class="modal" id="addCategoryModal{{ $item->id }}" tabindex="-1"
+    @foreach ($transaction as $item)
+       <!-- Detail History Modal -->
+       <div class="modal" id="addCategoryModal{{ $item->id }}" tabindex="-1"
         aria-labelledby="addCategoryModalLabel{{ $item->id }}" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -39,11 +41,13 @@
                 </div>
                 <div class="modal-body">
                     <h5 class="fw-semibold text-center">laporan transaksi barang</h5>
-                    <p class="text-center">tanggal : {{ $item->created_at }}</p>
+                    <p class="text-center">tanggal : {{ $item->created_at }}</p><br>
+                    <p class=" fw-sm">kode transaksi : {{ $item->code_invoice }} </p>
                     
                     {{-- <ul>
-                        <li>Total: Rp{{ $item->cash }}</li>
-                        <li>Kembalian: Rp{{ $item->change }}</li>
+                        <li>Total: Rp{{ number_format($item->cash, 0, ',',',') }}</li>
+                        <li>Kembalian: Rp{{ number_format($item->change, 0, ',', '.') }}</li>
+
                         <li>Create at: {{ $item->created_at }}</li>
                         <br>
                         <li>Data:</li>
@@ -63,7 +67,7 @@
                         @endforeach
                     </ul> --}}
                     <!-- replace <ul> with <table> and add table headers -->
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Nama produk</th>
@@ -83,26 +87,26 @@
                             @endphp
                             <tr>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ $product->price }}</td>
+                                <td>{{ number_format($product->price, 0, ',',',') }}</td>
                                 <td>{{ $product->description }}</td>
                                 <td>{{ $temp->qty }}</td>
-                                <td>{{ $subtotal }}</td>
+                                <td>{{ number_format($subtotal, 0, ',',',') }}</td>
                             </tr>
                             @endif
                         @endforeach
                         <!-- add total and change rows -->
                         <tr>
                             <td colspan="4" class="text-end fw-bold">Total:</td>
-                            <td>Rp{{ $item->cash }}</td>
+                            <td>{{ number_format($item->cash, 0, ',',',') }}</td>
                         </tr>
                         <tr>
                             <td colspan="4" class="text-end fw-bold">Kembalian:</td>
-                            <td>Rp{{ $item->change }}</td>
+                            <td>{{ number_format($item->change, 0, ',',',') }}</td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <td colspan="4" class="text-end fw-bold">Create at:</td>
                             <td>{{ $item->created_at }}</td>
-                        </tr>
+                        </tr> --}}
                         </tbody>
                     </table>
 
@@ -113,4 +117,5 @@
             </div>
         </div>
     </div>
+    @endforeach
 @endsection

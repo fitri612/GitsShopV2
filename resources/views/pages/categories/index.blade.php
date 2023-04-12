@@ -85,9 +85,9 @@
     <!-- Add Category Modal -->
     <div class="modal" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addCategoryModalLabel">Add Category</h5>
+            <div class="modal-content" style="border-radius: 15px">
+                <div class="modal-header" style="background: #31c554">
+                    <h5 class="modal-title text-white text-center" id="addCategoryModalLabel">Add Category</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -103,7 +103,9 @@
                                 </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Category</button>
+                        <button type="submit" class="btn btn-success">Add Category</button>
+                        {{-- <button type="button" class="btn  mb-3" data-bs-toggle="modal">
+                    <i class="fa-solid fa-plus"></i> Add Category</button> --}}
                     </form>
                 </div>
             </div>

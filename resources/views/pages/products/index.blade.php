@@ -124,12 +124,12 @@
     </div>
 
     {{-- modal create product --}}
-    <div class="modal " id="addProductModal" tabindex="-1" role="modal" aria-labelledby="addProductModalLabel"
-        aria-hidden="true">
+    <div class="modal" id="addProductModal" tabindex="-1" role="modal" aria-labelledby="addProductModalLabel"
+        aria-hidden="true" >
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+            <div class="modal-content" style="border-radius: 15px">
+                <div class="modal-header " style="background: #31c554; ">
+                    <h5 class="modal-title  text-white" id="addProductModalLabel">Add Product</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="POST" action="{{ route('store.productV2') }}" enctype="multipart/form-data">
@@ -167,7 +167,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-success">Save changes</button>
                     </div>
                 </form>
             </div>
