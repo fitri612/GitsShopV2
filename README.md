@@ -20,6 +20,11 @@ Install all the dependencies using composer
 Copy the example env file and make the required configuration changes in the .env file
 
     cp .env.example .env
+    
+If get error when cp .env.example .env can try using this 
+
+[env.example](https://github.com/laravel/laravel/blob/master/.env.example) 
+rename it to .env and edit it 
 
 Generate a new application key
 
