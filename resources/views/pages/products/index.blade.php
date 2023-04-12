@@ -1,5 +1,6 @@
-
-@extends('layouts.admin')
+@extends('layouts.app')
+{{-- @extends('layouts.admin') --}}
+@section('web-title', 'Product |')
 @section('content')
     <div class="row">
         {{-- Flask Message --}}
@@ -25,7 +26,7 @@
                     <i class="fa-solid fa-plus"></i> Add Product</button>
             </div>
             {{-- card datanya dalam bentuk table--}}
-            <div class="card ms-3 me-3 mb-5"  style="">    
+            <div class="card-body ms-3 me-3 mb-5"  style="">    
                 <table class="table   text-center">
                     <thead class="table" style="background-color: rgb(116, 193, 99); color:white">
                         <th>No</th>
@@ -70,21 +71,54 @@
                             </button>
                         </td>
                         <td>
-                            <form action="{{ route('delete_product', $item) }}" method="post">
+                            {{-- route masi pake versi productcontroller ori --}}
+                            {{-- <form action="{{ route('delete_product', $item) }}" method="post">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-danger mt-2 ">
                                     <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </form>
-                        @endif
+                                </button> --}}
+                                <button type="submit" data-bs-toggle="modal" data-bs-target="#deletemodal{{ route('destroy.productV2', $item) }}" name="submit" class="btn btn-danger mt-2">
+                                    <i class="fa-solid fa-trash"></i></button>
+                            {{-- </form> --}}
+
+                            {{-- modal delete --}}
+                            <div class="modal fade" id="deletemodal{{ route('destroy.productV2', $item) }}"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5 " id="staticBackdropLabel">peringatan</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <form action='{{ route('destroy.productV2', $item) }}' method="post" >
+                                        @csrf
+                                        @method('DELETE')
+                                        <h6>apakah anda yakin akan menghapus produk "{{ $item->name }}"</h6>
+                                        </form>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="{{ route('destroy.productV2', $item) }}" method="post">
+                                            @csrf 
+                                            @method('DELETE')
+                                            <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            {{-- modal delete --}}
+                            @endif
                         </td>
                     </tbody>
                     @endforeach
                 </table>
-                <div class="d-flex ms-3" >
+                {{-- <div class="d-flex ms-3" >
                     {!! $products->links('pagination::simple-bootstrap-5') !!}
-                </div>
+                </div> --}}
             </div>
         
             {{-- product dalam bentuk card, tapi di halaman admin --}}
@@ -123,12 +157,12 @@
     </div>
 
     {{-- modal create product --}}
-    <div class="modal " id="addProductModal" tabindex="-1" role="modal" aria-labelledby="addProductModalLabel"
-        aria-hidden="true">
+    <div class="modal" id="addProductModal" tabindex="-1" role="modal" aria-labelledby="addProductModalLabel"
+        aria-hidden="true" >
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+            <div class="modal-content" style="border-radius: 15px">
+                <div class="modal-header " style="background: #31c554; ">
+                    <h5 class="modal-title  text-white" id="addProductModalLabel">Add Product</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="POST" action="{{ route('store.productV2') }}" enctype="multipart/form-data">
@@ -161,12 +195,12 @@
                         </div>
                         <div class="form-group">
                             <label for="image">Image</label>
-                            <input type="file" class="form-control-file" id="image" name="image">
+                            <input type="file" class="form-control-file" id="image" name="image" > 
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-success">Save changes</button>
                     </div>
                 </form>
             </div>
@@ -178,9 +212,9 @@
         <div class="modal " id="editProductModal{{ $product->id }}" aria-labelledby="editProductModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                <div class="modal-content" style="border-radius: 15px">
+                    <div class="modal-header " style="background: #31c554; ">
+                        <h5 class="modal-title text-white" id="editProductModalLabel">Edit Product</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -245,10 +279,14 @@
                             {{-- image --}}
                             <div class="form-group">
                                 <label for="image">Image</label>
-                                <input type="file" class="form-control-file" id="image" name="image">
+                                <input type="file" class="form-control-file" id="image" name="image" onchange="previewImage()">
                             </div>
+                            {{-- preview image tapi gagal wkwkw--}}
+                            {{-- <div>
+                                <img id="image-preview" src="#" alt="Preview Image" style="display: none; max-width: 200px;">
+                            </div> --}}
 
-                            <button type="submit" class="btn btn-primary">Update Product</button>
+                            <button type="submit" class="btn btn-success">Update Product</button>
                         </form>
                     </div>
                 </div>
