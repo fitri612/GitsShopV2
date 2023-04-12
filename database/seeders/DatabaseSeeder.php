@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Categories;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,19 +27,32 @@ class DatabaseSeeder extends Seeder
                 ]
         ]);
 
-        DB::table('categories')->insert([
-            [
-                'id' => 1,
-                'name' => 'komputer',
-            ],
-            [
-                'id' => 2,
-                'name' => 'laptop',
-            ],
-            [
-                'id' => 3,
-                'name' => 'alat-alat',
-            ]
+        // DB::table('categories')->insert([
+        //     [
+        //         'id' => 1,
+        //         'name' => 'komputer',
+        //     ],
+        //     [
+        //         'id' => 2,
+        //         'name' => 'laptop',
+        //     ],
+        //     [
+        //         'id' => 3,
+        //         'name' => 'alat-alat',
+        //     ]
+        // ]);
+
+        Categories::create([
+            'name'=>'Komputer',
+            
+        ]);
+        Categories::create([
+            'name'=>'Leptop',
+            
+        ]);
+        Categories::create([
+            'name'=>'Alat-alat',
+            
         ]);
 
         DB::table('products')->insert([
