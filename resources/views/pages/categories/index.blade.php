@@ -63,15 +63,38 @@
                                         </button>
                                     </td>
                                     <td>
-                                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
-                                            class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">
-                                                <i class="fa-solid fa-trash"></i>
+                                            <button type="submit" data-bs-toggle="modal" data-bs-target="#deletemodal{{ route('categories.destroy', $category->id) }}" name="submit" class="btn btn-danger">
+                                                <i class="fa-solid fa-trash"></i></button>
 
-                                            </button>
-                                        </form>
+                                        {{-- modaldelete --}}                 
+                                        <div class="modal fade" id="deletemodal{{ route('categories.destroy', $category->id) }}"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h1 class="modal-title fs-5 " id="staticBackdropLabel">peringatan</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                <form action='{{ route('categories.destroy', $category->id) }}' method="post" >
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <h6>apakah anda yakin akan menghapus kategori "{{ $category->name }}"</h6>
+                                                    </form>
+                                                    
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="{{ route('categories.destroy', $category->id) }}" method="post">
+                                                        @csrf 
+                                                        @method('DELETE')
+                                                        <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        {{-- modaldelete --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -85,9 +108,9 @@
     <!-- Add Category Modal -->
     <div class="modal" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addCategoryModalLabel">Add Category</h5>
+            <div class="modal-content" style="border-radius: 15px">
+                <div class="modal-header" style="background: #31c554">
+                    <h5 class="modal-title text-white text-center" id="addCategoryModalLabel">Add Category</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -103,7 +126,9 @@
                                 </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Category</button>
+                        <button type="submit" class="btn btn-success">Add Category</button>
+                        {{-- <button type="button" class="btn  mb-3" data-bs-toggle="modal">
+                    <i class="fa-solid fa-plus"></i> Add Category</button> --}}
                     </form>
                 </div>
             </div>
@@ -115,7 +140,7 @@
         <div class="modal " id="editCategoryModal{{ $category->id }}" aria-labelledby="editCategoryModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content" style="border-radius: 15px">
                     <div class="modal-header">
                         <h5 class="modal-title" id="editCategoryModalLabel">Edit Category</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -134,7 +159,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Update Category</button>
+                            <button type="submit" class="btn btn-success">Update Category</button>
                         </form>
                     </div>
                 </div>

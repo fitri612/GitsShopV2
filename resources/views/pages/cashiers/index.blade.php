@@ -161,7 +161,7 @@
                             @csrf
                             <dl class="dlist-align">
                                 <dt>Cash: </dt>
-                                <dd class="text-right h4 b"> <input type="number" class="form-control " id="cash"
+                                <dd class="text-right h4 b"> <input type="text" class="form-control " id="cash"
                                         name="cash" value="" placeholder="Cash" required></dd>
                             </dl>
                             <div class="align-items-center">

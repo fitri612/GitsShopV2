@@ -181,9 +181,5 @@ class ProductControllerv2 extends Controller
     }
     
     
-    // public function index_admin()
-    // {
-    //     $products = Product::all();
-    //     return view('admin.product.indexadmin', compact('products'));
-    // }
+
 }
