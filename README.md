@@ -12,11 +12,10 @@
 
 <div align="center">
 
-**[PROJECT PHILOSOPHY](https://github.com/chroline/well_app#-project-philosophy) • 
-[TECH STACK](https://github.com/chroline/well_app#-tech-stack) • 
-[CONTRIBUTING](https://github.com/chroline/well_app#%EF%B8%8F-contributing) • 
-[SPREAD THE WORD](https://github.com/chroline/well_app#-spread-the-word) • 
-[LICENSE](https://github.com/chroline/well_app#%EF%B8%8F-license)**
+**[PROJECT PHILOSOPHY](https://github.com/fitri612/GitsShopV2#-project-philosophy) • 
+[TECH STACK](https://github.com/fitri612/GitsShopV2#-tech-stack) • 
+[CONTRIBUTING](https://github.com/fitri612/GitsShopV2#%EF%B8%8F-contributing) • 
+[SPREAD THE WORD](https://github.com/fitri612/GitsShopV2#-spread-the-word)**
 
 </div>
 
@@ -76,5 +75,4 @@ You can now access the server at http://localhost:8000
 
 <br />
 
-# 💛
-Thank you for giving us the opportunity to create the Lemon Shop project. We are very happy and excited to produce further projects that are even better and more innovative. Please look forward to our exciting upcoming projects!
+- 💛 Thank you for giving us the opportunity to create the Lemon Shop project. We are very happy and excited to produce further projects that are even better and more innovative. Please look forward to our exciting upcoming projects! •
