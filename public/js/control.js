@@ -123,3 +123,23 @@ $(document).ready(function () {
         $("#cash").val(numeric); // Set the numeric value back to the input
     });
 });
+
+// buat preview image di page product
+// function previewImage() {
+//     var preview = document.querySelector("#image-preview");
+//     var file = document.querySelector("#image").files[0];
+//     var reader = new FileReader();
+
+//     reader.addEventListener(
+//         "load",
+//         function () {
+//             preview.src = reader.result;
+//             preview.style.display = "block";
+//         },
+//         false
+//     );
+
+//     if (file) {
+//         reader.readAsDataURL(file);
+//     }
+// }
