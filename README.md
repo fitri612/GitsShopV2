@@ -1,12 +1,5 @@
 # UTS PROJECT | Studi Independen GITS ID
 
-## 👨‍👩‍👧‍👦: Creators
-- Name: ``` Lailatul Fitriyah ```
-- Name: ``` Aldi Salfandi ```
-- Name: ``` Rafli Haikal ```
-- Name: ``` Yusuf Riski ```
-- Name: ``` Muhammad Nafis ```
-
 </br>
 </br>
 
@@ -29,16 +22,29 @@
 
 Here's a brief high-level overview of the tech stack the Well app uses:
 
+<div>
+
+[![My Tech Stack](https://github-readme-tech-stack.vercel.app/api/cards?showBorder=false&lineCount=2&theme=github_dark&hideBg=true&hideTitle=true&line1=laravel,laravel,FF2D20;bootstrap,bootstrap,7952B3;css3,css3,1572B6;&line2=html5,html5,E34F26;javascript,javascript,F7DF1E;php,php,777BB4;)](https://github-readme-tech-stack.vercel.app/api/cards?showBorder=false&lineCount=2&theme=github_dark&hideBg=true&hideTitle=true&line1=laravel,laravel,FF2D20;bootstrap,bootstrap,7952B3;css3,css3,1572B6;&line2=html5,html5,E34F26;javascript,javascript,F7DF1E;php,php,777BB4;)
+
+</div>
+
 - The Lemon Shop project uses the Laravel 9 development framework as a reliable and efficient development base. In addition, the use of Bootstrap technology, native CSS, HTML, JavaScript, and PHP is also used to enrich the appearance and functionality of the website. 
 
 # ✍️ Contributing
 If you want to say thank you and/or support active development of the Well app:
 
 - [Add a GitHub Star to the project!](https://github.com/fitri612/GitsShopV2)
-- https://github.com/emnapis03
-- https://github.com/schwarst
-- https://github.com/xellyx
-- https://github.com/akhipo14
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/fitri612"><img src="https://avatars.githubusercontent.com/u/74086121?v=4" width="100px;" alt="Lailatul Fitriyah"/><br /><sub><b>Lailatul Fitriyah</b></sub></a><br /><a href="#" title="Answering Questions">💬</a> <a href="#" title="Documentation">📖</a> <a href="#" title="Reviewed Pull Requests">👀</a> <a href="#s" title="Talks">📢</a></td>
+      <td align="center"><a href="https://github.com/schwarst"><img src="https://avatars.githubusercontent.com/u/79931015?v=4" width="100px;" alt="Aldi Salfandi"/><br /><sub><b>Aldi Salfandi</b></sub></a><br /><a href="#" title="Answering Questions">💬</a> <a href="#" title="Documentation">📖</a> <a href="#" title="Reviewed Pull Requests">👀</a> <a href="#s" title="Talks">📢</a></td>
+     <td align="center"><a href="https://github.com/akhipo14"><img src="https://avatars.githubusercontent.com/u/116264174?v=4" width="100px;" alt="Rafli Haikal"/><br /><sub><b>Rafli Haikal</b></sub></a><br /><a href="#" title="Answering Questions">💬</a> <a href="#" title="Documentation">📖</a> <a href="#" title="Reviewed Pull Requests">👀</a> <a href="#s" title="Talks">📢</a></td>
+     <td align="center"><a href="https://github.com/xellyx"><img src="https://avatars.githubusercontent.com/u/79205130?v=4" width="100px;" alt="Yusuf Riski"/><br /><sub><b>Yusuf Riski</b></sub></a><br /><a href="#" title="Answering Questions">💬</a> <a href="#" title="Documentation">📖</a> <a href="#" title="Reviewed Pull Requests">👀</a> <a href="#s" title="Talks">📢</a></td>
+     <td align="center"><a href="https://github.com/emnapis03"><img src="https://avatars.githubusercontent.com/u/124242576?v=4" width="100px;" alt="Muhammad Nafis"/><br /><sub><b>Muhammad Nafis</b></sub></a><br /><a href="#" title="Answering Questions">💬</a> <a href="#" title="Documentation">📖</a> <a href="#" title="Reviewed Pull Requests">👀</a> <a href="#s" title="Talks">📢</a></td>
+      </tr>
+    </tbody>
+</table>
 
 ## Installation
 
