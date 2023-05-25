@@ -1,6 +1,4 @@
 $(function () {
-    //The passed argument has to be at least a empty object or a object with your desired options
-    //$("body").overlayScrollbars({ });
     $("#items").height(552);
     $("#items").overlayScrollbars({
         overflowBehavior: {
@@ -27,49 +25,26 @@ function decrementValue(id) {
 }
 
 // Ambil semua elemen tab
-const tabs = document.querySelectorAll(".nav-link");
+document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".nav-link");
 
-// Tambahkan event listener pada setiap tab
-tabs.forEach((tab) => {
-    tab.addEventListener("click", (e) => {
-        e.preventDefault();
-        // Hapus kelas 'active' dari semua tab
-        tabs.forEach((tab) => tab.classList.remove("active"));
-        // Tambahkan kelas 'active' ke tab yang diklik
-        e.target.classList.add("active");
-        // Ambil target elemen tab-pane dan hapus kelas 'active' dari semua elemen tab-pane
-        const target = document.querySelector(e.target.getAttribute("href"));
-        const tabPanes = document.querySelectorAll(".tab-pane");
-        tabPanes.forEach((pane) => pane.classList.remove("active"));
-        // Tambahkan kelas 'active' ke elemen tab-pane yang sesuai dengan target
-        target.classList.add("active");
-    });
-});
-
-// navbar item
-// Ambil semua elemen tab
-const navtab = document.querySelectorAll(".list-group-item");
-
-let activeTab = null; // variabel untuk menyimpan tab yang sedang aktif
-
-// Tambahkan event listener pada setiap tab
-navtab.forEach((tab) => {
-    tab.addEventListener("click", (e) => {
-        // Hapus kelas 'active' dari tab yang sedang aktif
-        if (activeTab) {
-            activeTab.classList.remove("active");
-        }
-        // Tambahkan kelas 'active' ke tab yang diklik
-        tab.classList.add("active");
-        // Simpan tab yang sedang aktif
-        activeTab = tab;
-
-        // Ambil target elemen tab-pane dan hapus kelas 'active' dari semua elemen tab-pane
-        const target = document.querySelector(tab.getAttribute("href"));
-        const tabPanes = document.querySelectorAll(".tab-pane");
-        tabPanes.forEach((pane) => pane.classList.remove("active"));
-        // Tambahkan kelas 'active' ke elemen tab-pane yang sesuai dengan target
-        target.classList.add("active");
+    // Tambahkan event listener pada setiap tab
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", (e) => {
+            e.preventDefault();
+            // Hapus kelas 'active' dari semua tab
+            tabs.forEach((tab) => tab.classList.remove("active"));
+            // Tambahkan kelas 'active' ke tab yang diklik
+            e.target.classList.add("active");
+            // Ambil target elemen tab-pane dan hapus kelas 'active' dari semua elemen tab-pane
+            const target = document.querySelector(
+                e.target.getAttribute("href")
+            );
+            const tabPanes = document.querySelectorAll(".tab-pane");
+            tabPanes.forEach((pane) => pane.classList.remove("active"));
+            // Tambahkan kelas 'active' ke elemen tab-pane yang sesuai dengan target
+            target.classList.add("active");
+        });
     });
 });
 
@@ -124,9 +99,47 @@ function searchByName() {
     }
 }
 
-var menuItems = document.querySelectorAll('#navMenus li');
+var menuItems = document.querySelectorAll("#navMenus li");
 for (var i = 0; i < menuItems.length; i++) {
-  if (menuItems[i].querySelector('a').href === window.location.href) {
-    menuItems[i].classList.add('active');
-  }
+    if (menuItems[i].querySelector("a").href === window.location.href) {
+        menuItems[i].classList.add("active");
+    }
 }
+
+// format rupiah dalam input di halaman transaksi checkout
+$(document).ready(function () {
+    $("#cash").on("input", function () {
+        var input = $(this).val(); // Get the user input
+        var formatted = input
+            .replace(/\D/g, "")
+            .replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Format the input
+        $(this).val(formatted); // Set the formatted value back to the input
+        // $(this).val("Rp" + formatted); //kalo mau pake format rp
+    });
+
+    $("form").submit(function () {
+        var input = $("#cash").val(); // Get the input value
+        var numeric = input.replace(/\D/g, ""); // Remove non-numeric characters
+        $("#cash").val(numeric); // Set the numeric value back to the input
+    });
+});
+
+// buat preview image di page product
+// function previewImage() {
+//     var preview = document.querySelector("#image-preview");
+//     var file = document.querySelector("#image").files[0];
+//     var reader = new FileReader();
+
+//     reader.addEventListener(
+//         "load",
+//         function () {
+//             preview.src = reader.result;
+//             preview.style.display = "block";
+//         },
+//         false
+//     );
+
+//     if (file) {
+//         reader.readAsDataURL(file);
+//     }
+// }

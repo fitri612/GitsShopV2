@@ -44,14 +44,19 @@ class DatabaseSeeder extends Seeder
 
         Categories::create([
             'name'=>'Komputer',
-            
+            'created_at' => now(),
+            'updated_at' => now() 
         ]);
         Categories::create([
             'name'=>'Leptop',
+            'created_at' => now(),
+            'updated_at' => now()
             
         ]);
         Categories::create([
             'name'=>'Alat-alat',
+            'created_at' => now(),
+            'updated_at' => now()
             
         ]);
 
