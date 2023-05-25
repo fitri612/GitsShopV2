@@ -9,6 +9,11 @@
                 {{ session('success') }}
             </div>
         @endif
+        @if (session('updated'))
+            <div class="alert alert-success">
+                {{ session('updated') }}
+            </div>
+        @endif
 
         @if (session('error'))
             <div class="alert alert-danger">

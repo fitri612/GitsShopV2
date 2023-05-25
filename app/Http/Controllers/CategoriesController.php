@@ -47,7 +47,7 @@ class CategoriesController extends Controller
             Categories::create([
                 'name' => $request->name,
             ]);
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')->with('success', 'Category has been Created.');
         }
     }
 
@@ -89,7 +89,7 @@ class CategoriesController extends Controller
         $category->update([
             'name' => $request->name,
         ]);
-        return redirect()->route('category.index')->with('success', 'Category has been updated.');
+        return redirect()->route('category.index')->with('update', 'Category has been updated.');
     }
 
     /**
